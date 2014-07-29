@@ -1,0 +1,76 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.no-select {
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+}
+
+.lazy-wrapper {
+    position: relative;
+}
+
+.lazy {
+    padding-right: 20px;
+    width: 100%;
+}
+
+.track {
+    background: lightgray;
+    bottom: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+}
+
+.track-inner {
+    bottom: 80px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+
+.track-scrubber {
+    background: blue;
+    cursor: pointer;
+    height: 40px;
+    position: absolute;
+    width: 100%;
+}
+
+.track-scrubber .text {
+    display: none;
+}
+
+.track-action {
+    border: 0;
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+
+.track-action .text {
+    display: none;
+}
+
+.track-prev {
+    background: red;
+    bottom: 20px;
+}
+
+.track-next {
+    background: green;
+    bottom: 0;
+}

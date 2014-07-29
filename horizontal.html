@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>Knockout Lazy List</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script src="knockout-3.1.0.debug.js"></script>
+    <script src="knockout-postbox.js"></script>
+    <script src="knockout.lazy.list.js"></script>
+</head>
+<body>
+    <div>
+        <div data-scrubber>
+            <span>Position</span> (<span data-bind="text: on"></span>/<span data-bind="text: max"></span>)
+            <input type="range" min="0" data-bind="value: on, attr: { max: max() }, valueUpdate: 'input'" style="width: 100%;" />
+        </div>
+        <div data-lazy-list='{"endpoint": "30.json", "mode": "vertical"}'>
+            <div>
+                <span>Page Size</span> (<span data-bind="text: pageSize"></span>)
+                <input type="range" min="1"  max="100" data-bind="value: pageSize, valueUpdate: 'input'" style="width: 100%;" />
+            </div>
+            <div>
+                Filter <input type="text" data-bind="value: filter"/>
+            </div>
+            <table style="width: 100%;">
+                <tbody data-bind="foreach: data" data-lazy-list-content>
+                <tr data-bind="template: {foreach: $root.getProperties($data), name: 'picker'}">
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script id="picker" type="text/html">
+    <!-- ko if: Array.isArray($data) -->
+        <!-- ko template: {foreach: $data, name: 'picker'} -->
+        <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: !Array.isArray($data) && $data === Object($data) -->
+        <!-- ko template: {foreach: $root.getProperties($data), name: 'picker'} -->
+        <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: !Array.isArray($data) && $data !== Object($data) -->
+        <td data-bind="text: $data"></td>
+    <!-- /ko -->
+</script>
+</html>
