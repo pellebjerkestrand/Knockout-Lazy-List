@@ -52,22 +52,48 @@
         self.data = ko.observableArray([]);
         self.filter = ko.observable('');
         self.filtered = ko.computed(function(){
-            return self.data().filter(function(item){
-                return item.name.toLowerCase().indexOf(self.filter().toLowerCase()) > -1;
-            });
+            // TODO: Filters
+            return self.data();
         });
         self.on = ko.observable(0);
         self.previous = function(){
             if(self.on() > 0){
-                self.on(self.on()-1);
+                self.on(self.on() - 1);
             }
         };
         self.next = function(){
             if(self.on() < self.max()){
-                self.on(self.on()+1);
+                self.on(self.on() + 1);
             }
         };
-        self.pageSize = ko.observable(10);
+        self.previousPage = function(){
+            var on = parseInt(self.on()),
+                size = parseInt(self.pageSize());
+
+            if(on > size){
+                self.on(on - size);
+            } else {
+                self.firstPage();
+            }
+        };
+        self.nextPage = function(){
+            var on = parseInt(self.on()),
+                max = parseInt(self.max()),
+                size = parseInt(self.pageSize());
+
+            if(on < max - size){
+                self.on(on + size);
+            } else {
+                self.lastPage();
+            }
+        };
+        self.firstPage = function(){
+            self.on(0);
+        };
+        self.lastPage = function(){
+            self.on(self.max());
+        };
+        self.pageSize = ko.observable(30);
         self.visible = ko.computed(function(){
             var start = parseInt(self.on()),
                 page = parseInt(self.pageSize());
@@ -88,6 +114,14 @@
             }
 
             return max;
+        });
+
+        self.firstShown = ko.computed(function(){
+            return self.on() + 1;
+        });
+
+        self.lastShown = ko.computed(function(){
+            return self.on() + self.visible().length;
         });
 
         self.percentage = ko.computed({

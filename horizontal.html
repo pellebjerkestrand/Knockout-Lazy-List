@@ -4,7 +4,6 @@
     <title>Knockout Lazy List</title>
     <script src="jquery-1.11.1.js"></script>
     <script src="knockout-3.1.0.debug.js"></script>
-    <script src="knockout-postbox.js"></script>
     <script src="knockout.lazy.list.js"></script>
 </head>
 <body>
@@ -13,7 +12,7 @@
             <span>Position</span> (<span data-bind="text: on"></span>/<span data-bind="text: max"></span>)
             <input type="range" min="0" data-bind="value: on, attr: { max: max() }, valueUpdate: 'input'" style="width: 100%;" />
         </div>
-        <div data-lazy-list='{"endpoint": "30.json", "mode": "vertical"}'>
+        <div data-lazy-list='{"endpoint": "30.json", "mode": "horizontal"}'>
             <div>
                 <span>Page Size</span> (<span data-bind="text: pageSize"></span>)
                 <input type="range" min="1"  max="100" data-bind="value: pageSize, valueUpdate: 'input'" style="width: 100%;" />
@@ -23,9 +22,11 @@
             </div>
             <table style="width: 100%;">
                 <tbody data-bind="foreach: data" data-lazy-list-content>
-                <tr data-bind="template: {foreach: $root.getProperties($data), name: 'picker'}">
+                    <tr>
 
-                </tr>
+                        <!-- ko template: {foreach: $root.getProperties($data.months), name: 'picker'} -->
+                        <!-- /ko -->
+                    </tr>
                 </tbody>
             </table>
         </div>

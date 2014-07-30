@@ -17,8 +17,13 @@
 }
 
 .lazy {
-    padding-right: 20px;
+    padding-right: 16px;
+    table-layout: fixed;
     width: 100%;
+}
+
+.lazy th {
+    text-align: left;
 }
 
 .track {
@@ -28,11 +33,11 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 20px;
+    width: 16px;
 }
 
 .track-inner {
-    bottom: 80px;
+    bottom: 32px;
     position: absolute;
     right: 0;
     top: 0;
@@ -40,9 +45,10 @@
 }
 
 .track-scrubber {
-    background: blue;
+    background: gray;
+    border-radius: 2px;
     cursor: pointer;
-    height: 40px;
+    height: 32px;
     position: absolute;
     width: 100%;
 }
@@ -55,7 +61,7 @@
     border: 0;
     cursor: pointer;
     display: block;
-    height: 20px;
+    height: 16px;
     position: absolute;
     right: 0;
     width: 100%;
@@ -67,7 +73,7 @@
 
 .track-prev {
     background: red;
-    bottom: 20px;
+    bottom: 16px;
 }
 
 .track-next {

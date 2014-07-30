@@ -10,6 +10,7 @@
 <body>
     <div>
         <div data-lazy-list='{"endpoint": "5k.json", "mode": "vertical"}'>
+            <!--
             <div>
                 <span>Page Size</span> (<span data-bind="text: pageSize"></span>)
                 <input type="range" min="1"  max="100" data-bind="value: pageSize, valueUpdate: 'input'" style="width: 100%;" />
@@ -20,91 +21,55 @@
             <div>
                 <span>Position</span> (<span data-bind="text: on"></span>/<span data-bind="text: max"></span>)
                 <input type="range" min="0" data-bind="value: on, attr: { max: max() }, valueUpdate: 'input'" style="width: 100%;" />
-                <button type="button" data-bind="click: previous">Previous</button>
-                <button type="button" data-bind="click: next">Next</button>
             </div>
+            -->
             <div class="lazy-wrapper">
                 <table class="lazy">
                     <thead>
                         <tr>
-                            <td>Name</td>
-                            <td>Guid</td>
-                            <td>Email</td>
-                            <td>Phone</td>
+                            <th>Name</th>
+                            <th>Guid</th>
+                            <th>Email</th>
+                            <th>Phone</th>
                         </tr>
                     </thead>
                     <tbody data-bind="foreach: visible, scroll: onWheel">
-                    <tr>
-                        <td data-bind="text: name"></td>
-                        <td data-bind="text: guid"></td>
-                        <td data-bind="text: email"></td>
-                        <td data-bind="text: phone"></td>
-                    </tr>
+                        <tr>
+                            <td data-bind="text: name"></td>
+                            <td data-bind="text: guid"></td>
+                            <td data-bind="text: email"></td>
+                            <td data-bind="text: phone"></td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="track">
                     <div class="track-inner">
                         <div class="track-scrubber" data-bind="lazyScrubber: { percentage: percentage, on: on(), max: max() }">
-                            <span class="text">Pull me</span>
+                            <span class="text">Scrubber</span>
                         </div>
                     </div>
+                    <!--
                     <button class="track-action track-prev" type="button" data-bind="click: previous">
                         <span class="text">Previous</span>
                     </button>
                     <button class="track-action track-next" type="button" data-bind="click: next">
                         <span class="text">Next</span>
                     </button>
+                    -->
                 </div>
             </div>
-        </div>
-    </div>
-    <div>
-        <div data-lazy-list='{"endpoint": "5k.json", "mode": "vertical"}'>
-            <div>
-                <span>Page Size</span> (<span data-bind="text: pageSize"></span>)
-                <input type="range" min="1"  max="100" data-bind="value: pageSize, valueUpdate: 'input'" style="width: 100%;" />
+            <div style="text-align: center;">
+                <span>
+                    Showing item <span data-bind="text: firstShown"></span> through <span data-bind="text: lastShown"></span>
+                </span>
             </div>
-            <div>
-                Filter <input type="text" data-bind="value: filter"/>
-            </div>
-            <div>
-                <span>Position</span> (<span data-bind="text: on"></span>/<span data-bind="text: max"></span>)
-                <input type="range" min="0" data-bind="value: on, attr: { max: max() }, valueUpdate: 'input'" style="width: 100%;" />
+            <div style="text-align: center;">
+                <button type="button" data-bind="click: firstPage">First</button>
+                <button type="button" data-bind="click: previousPage">Previous page</button>
                 <button type="button" data-bind="click: previous">Previous</button>
                 <button type="button" data-bind="click: next">Next</button>
-            </div>
-            <div class="lazy-wrapper">
-                <table class="lazy">
-                    <thead>
-                        <tr>
-                            <td>Name</td>
-                            <td>Guid</td>
-                            <td>Email</td>
-                            <td>Phone</td>
-                        </tr>
-                    </thead>
-                    <tbody data-bind="foreach: visible, scroll: onWheel">
-                    <tr>
-                        <td data-bind="text: name"></td>
-                        <td data-bind="text: guid"></td>
-                        <td data-bind="text: email"></td>
-                        <td data-bind="text: phone"></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="track">
-                    <div class="track-inner">
-                        <div class="track-scrubber" data-bind="lazyScrubber: { percentage: percentage, on: on(), max: max() }">
-                            <span class="text">Pull me</span>
-                        </div>
-                    </div>
-                    <button class="track-action track-prev" type="button" data-bind="click: previous">
-                        <span class="text">Previous</span>
-                    </button>
-                    <button class="track-action track-next" type="button" data-bind="click: next">
-                        <span class="text">Next</span>
-                    </button>
-                </div>
+                <button type="button" data-bind="click: nextPage">Next page</button>
+                <button type="button" data-bind="click: lastPage">Last</button>
             </div>
         </div>
     </div>
