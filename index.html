@@ -5,24 +5,11 @@
     <script src="jquery-1.11.1.js"></script>
     <script src="knockout-3.1.0.debug.js"></script>
     <script src="knockout.lazy.list.js"></script>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div>
-        <div data-lazy-list='{"endpoint": "5k.json", "mode": "vertical"}'>
-            <!--
-            <div>
-                <span>Page Size</span> (<span data-bind="text: pageSize"></span>)
-                <input type="range" min="1"  max="100" data-bind="value: pageSize, valueUpdate: 'input'" style="width: 100%;" />
-            </div>
-            <div>
-                Filter <input type="text" data-bind="value: filter"/>
-            </div>
-            <div>
-                <span>Position</span> (<span data-bind="text: on"></span>/<span data-bind="text: max"></span>)
-                <input type="range" min="0" data-bind="value: on, attr: { max: max() }, valueUpdate: 'input'" style="width: 100%;" />
-            </div>
-            -->
+        <div data-lazy-list='{ "endpoint": "5k.json", "pageSize": 30 }'>
             <div class="lazy-wrapper">
                 <table class="lazy">
                     <thead>
@@ -48,14 +35,6 @@
                             <span class="text">Scrubber</span>
                         </div>
                     </div>
-                    <!--
-                    <button class="track-action track-prev" type="button" data-bind="click: previous">
-                        <span class="text">Previous</span>
-                    </button>
-                    <button class="track-action track-next" type="button" data-bind="click: next">
-                        <span class="text">Next</span>
-                    </button>
-                    -->
                 </div>
             </div>
             <div style="text-align: center;">

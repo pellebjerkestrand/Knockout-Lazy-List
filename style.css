@@ -22,6 +22,13 @@
     width: 100%;
 }
 
+.lazy-horizontal {
+    min-width: 100%;
+    padding-bottom: 16px;
+    padding-right: 0;
+    width: auto;
+}
+
 .lazy th {
     text-align: left;
 }
@@ -57,26 +64,22 @@
     display: none;
 }
 
-.track-action {
-    border: 0;
-    cursor: pointer;
-    display: block;
+.track-horizontal {
     height: 16px;
-    position: absolute;
-    right: 0;
-    width: 100%;
+    left: 0;
+    top: auto;
+    width: auto;
 }
 
-.track-action .text {
-    display: none;
-}
-
-.track-prev {
-    background: red;
-    bottom: 16px;
-}
-
-.track-next {
-    background: green;
+.track-horizontal .track-inner {
     bottom: 0;
+    height: 16px;
+    left: 0;
+    right: 32px;
+    width: auto;
+}
+
+.track-horizontal .track-scrubber {
+    height: 16px;
+    width: 32px;
 }
