@@ -188,7 +188,7 @@
                 return;
             }
 
-            if((event.deltaX || event.detail || event.wheelDelta) < 0){
+            if((event.deltaY || event.detail || event.wheelDelta) < 0){
                 end = start + 1;
             } else {
                 end = start - 1;
