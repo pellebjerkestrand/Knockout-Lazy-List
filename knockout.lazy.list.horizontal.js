@@ -94,7 +94,6 @@
                 var title = visible[i].month;
 
                 if(first){
-                    console.log('first');
                     columns.push({
                         title: title,
                         columns: count
