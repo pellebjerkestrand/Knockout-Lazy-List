@@ -41,6 +41,8 @@
 
         self.data = ko.observableArray([]);
 
+        // NOTE: ko.postbox for sending, receiving filtered, sorted data
+
         self.filtered = ko.computed(function(){
             return self.data().filter(function(){
                     // TODO: Filters. Array.prototype.filter(callback[, thisArg]) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
@@ -61,7 +63,7 @@
 
         self.pageSize = ko.observable(pageSize);
 
-        self.visible = ko.computed(function(){
+        self.visibleData = ko.computed(function(){
             var start = parseInt(self.on()),
                 page = parseInt(self.pageSize());
 
@@ -82,8 +84,23 @@
             return data;
         });
 
-        self.visibleColumns = ko.computed(function(){
-            var visible = self.visible()[0] || [],
+        self.headers = ko.observableArray([]);
+
+        self.visibleHeaders = ko.computed(function(){
+            var start = parseInt(self.on()),
+                page = parseInt(self.pageSize());
+
+            if(isNaN(start) || isNaN(page)){
+                self.state(states.error);
+
+                return [];
+            }
+
+            return self.headers().slice(start, start + page);
+        });
+
+        self.visibleGroups = ko.computed(function(){
+            var visible = self.visibleHeaders() || [],
                 columns = [],
                 column = 0,
                 previousTitle = '',
@@ -191,8 +208,9 @@
                 beforeSend: function(){
                     self.state(states.loading);
                 },
-                success: function(data){
-                    self.data(data);
+                success: function(response){
+                    self.headers(response.headers);
+                    self.data(response.data);
                     self.state(states.success);
                 },
                 error: function(){

@@ -16,17 +16,22 @@
             <table class="lazy lazy-horizontal">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <!-- ko foreach: $root.visibleColumns -->
+                    <th rowspan="2">Name</th>
+                    <!-- ko foreach: $root.visibleGroups -->
                     <th data-bind="text: title, attr: { colspan: columns }"></th>
+                    <!-- /ko -->
+                </tr>
+                <tr>
+                    <!-- ko foreach: $root.visibleHeaders -->
+                    <th data-bind="text: day, attr: { title: info }"></th>
                     <!-- /ko -->
                 </tr>
                 </thead>
                 <tbody data-bind="foreach: data, scroll: onWheel">
                 <tr>
                     <td data-bind="text: company"></td>
-                    <!-- ko foreach: $root.visible()[$index()] -->
-                    <td data-bind="text: $data.day, click: function(){$root.noop($parent.company, $data.day)}"></td>
+                    <!-- ko foreach: $root.visibleData()[$index()] -->
+                    <td data-bind="text: $data.text"></td>
                     <!-- /ko -->
                 </tr>
                 </tbody>
