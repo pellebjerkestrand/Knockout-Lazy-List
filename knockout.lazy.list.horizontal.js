@@ -82,6 +82,46 @@
             return data;
         });
 
+        self.visibleColumns = ko.computed(function(){
+            var visible = self.visible()[0] || [],
+                columns = [],
+                column = 0,
+                previousTitle = '',
+                count = 1,
+                first = true;
+
+            for(var i = 0; i < visible.length; i++){
+                var title = visible[i].month;
+
+                if(first){
+                    console.log('first');
+                    columns.push({
+                        title: title,
+                        columns: count
+                    });
+
+                    first = false;
+                } else {
+                    if(previousTitle === title){
+                        count++;
+                        columns[column].columns = count;
+                    } else {
+                        count = 1;
+                        column++;
+
+                        columns.push({
+                            title: title,
+                            columns: count
+                        });
+                    }
+                }
+
+                previousTitle = title;
+            }
+
+            return columns;
+        });
+
         self.getNumberOfDays = ko.computed(function(){
             var row = self.filtered()[0];
 

@@ -17,7 +17,9 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th data-bind="attr: { colspan: pageSize }">Days</th>
+                    <!-- ko foreach: $root.visibleColumns -->
+                    <th data-bind="text: title, attr: { colspan: columns }"></th>
+                    <!-- /ko -->
                 </tr>
                 </thead>
                 <tbody data-bind="foreach: data, scroll: onWheel">
