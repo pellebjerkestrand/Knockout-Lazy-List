@@ -1,36 +1,9 @@
-(function($, ko, document){
+(function($, ko){
     var states = {
         initial: 'initial',
         error: 'error',
         loading: 'loading',
         success: 'success'
-    };
-
-    ko.bindingHandlers.lazyScrubberHorizontal = {
-        init: function(element, valueAccessor){
-            var options = valueAccessor(),
-                percentage = options.percentage || function(){};
-
-            element.onmousedown = function(){
-                $(document.body).addClass('no-select');
-
-                document.onmousemove = function(event){
-                    percentage(((event.pageX - element.parentNode.getBoundingClientRect().left) - (element.offsetWidth / 2)) / element.parentNode.offsetWidth);
-                };
-
-                document.onmouseup = function(){
-                    $(document.body).removeClass('no-select');
-                    document.onmousemove = document.onmouseup = null;
-                };
-            };
-        },
-        update: function(element, valueAccessor){
-            var options = valueAccessor(),
-                on = options.on || 0,
-                max = options.max || 0;
-
-            $(element).css('left', (on / max * 100) + "%");
-        }
     };
 
     function LazyListHorizontal(options){
@@ -41,7 +14,7 @@
 
         self.data = ko.observableArray([]);
 
-        // NOTE: ko.postbox for sending, receiving filtered, sorted data
+        // NOTE: ko.postbox vs. custom binding handler for sending, receiving filtered, sorted data
 
         self.filtered = ko.computed(function(){
             return self.data().filter(function(){
@@ -225,4 +198,4 @@
             ko.applyBindings(new LazyListHorizontal($(this).data('lazy-list-horizontal')), this);
         });
     });
-})(jQuery, ko, document);
+})(jQuery, ko);
