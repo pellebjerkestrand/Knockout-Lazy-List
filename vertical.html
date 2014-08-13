@@ -14,7 +14,7 @@
         $(function(){
             var reverse = false;
 
-            $('[data-sort-alpha]').on('click', function(){
+            $('[data-sort]').on('click', function(){
                 var comp = function(){
                     return 0;
                 };
@@ -50,18 +50,26 @@
                 ko.postbox.publish('LLCT', comp);
             });
 
-            var filters = [
-                function(value, index, array){
-                    return value.name.toLowerCase().indexOf('ale') != -1;
-                }
-            ];
+            var filter = true;
 
             $('[data-filter]').on('click', function(){
-                ko.postbox.publish('LLFT', filters);
-            });
+                if(filter){
+                    ko.postbox.publish('LLFT', [
+                        function(value, index, array){
+                            return value.name.toLowerCase().indexOf('a') != -1;
+                        },
+                        function(value, index, array){
+                            return value.name.toLowerCase().indexOf('b') != -1;
+                        },
+                        function(value, index, array){
+                            return value.name.toLowerCase().indexOf('c') != -1;
+                        }
+                    ]);
+                } else {
+                    ko.postbox.publish('LLFT', []);
+                }
 
-            $('[data-defilter]').on('click', function(){
-                ko.postbox.publish('LLFT', []);
+                filter = !filter;
             });
         });
     </script>
@@ -69,9 +77,8 @@
 <body>
 <div>
     <div>
-        <button type="button" data-sort-alpha>Alphabetic sort</button>
+        <button type="button" data-sort>Sort</button>
         <button type="button" data-filter>Filter</button>
-        <button type="button" data-defilter>Defilter</button>
     </div>
     <div data-lazy-list-vertical='{ "endpoint": "5k.json", "pageSize": 30 }'>
         <div>
