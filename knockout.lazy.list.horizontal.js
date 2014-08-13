@@ -8,7 +8,9 @@
 
     function LazyListHorizontal(options){
         var self = this,
-            pageSize = options.pageSize || 30;
+            pageSize = options.pageSize || 30,
+            filterTopic = options.filterTopic || 'LLFT',
+            comparatorTopic = options.comparatorTopic || 'LLCT';
 
         self.initial = false;
 
@@ -20,20 +22,11 @@
 
         self.data = ko.observableArray([]);
 
-        self.filters = ko.observableArray([]);
+        self.filters = ko.observableArray([]).subscribeTo(filterTopic);
 
-        self.comparator = ko.observable(null);
+        self.comparator = ko.observable(null).subscribeTo(comparatorTopic);
 
-        self.visibleData = ko.computed(function(){
-            var start = parseInt(self.on()),
-                page = parseInt(self.pageSize());
-
-            if(isNaN(start) || isNaN(page)){
-                self.state(states.error);
-
-                return [];
-            }
-
+        self.processed = ko.computed(function(){
             var data = self.data(),
                 filters = self.filters(),
                 filtered = data;
@@ -53,10 +46,25 @@
                 sorted = sorted.sort(comparator);
             }
 
+            return sorted;
+        });
+
+        self.visibleData = ko.computed(function(){
+            var start = parseInt(self.on()),
+                page = parseInt(self.pageSize());
+
+            if(isNaN(start) || isNaN(page)){
+                self.state(states.error);
+
+                return [];
+            }
+
+            var processed = self.processed();
+
             var result = [];
 
-            for(var j = 0; j < sorted.length; j++){
-                result.push(sorted[j].days.slice(start, start + page));
+            for(var j = 0; j < processed.length; j++){
+                result.push(processed[j].days.slice(start, start + page));
             }
 
             return result;
