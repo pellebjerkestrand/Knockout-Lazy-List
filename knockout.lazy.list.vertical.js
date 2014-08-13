@@ -8,63 +8,55 @@
 
     function LazyListVertical(options){
         var self = this,
-            pageSize = options.pageSize || 30;
+            pageSize = options.pageSize || 30,
+            filterTopic = options.filterTopic || 'LLFT',
+            comparatorTopic = options.comparatorTopic || 'LLCT';
 
         self.state = ko.observable(states.initial);
-
-        self.data = ko.observableArray([]);
-
-        self.filtered = ko.computed(function(){
-            return self.data().filter(function(){
-                    // TODO: Filters. Array.prototype.filter(callback[, thisArg]) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-                    return true;
-                }
-            );
-        });
-
-        self.sorted = ko.computed(function(){
-            var sorted = self.filtered();
-
-            // TODO: Sorts. Array.prototype.sort([compareFunction]) https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-
-            return sorted;
-        });
 
         self.on = ko.observable(0);
 
         self.pageSize = ko.observable(pageSize);
 
-        self.visible = ko.computed(function(){
-            var start = parseInt(self.on()),
-                page = parseInt(self.pageSize());
+        self.data = ko.observableArray([]);
 
-            if(isNaN(start) || isNaN(page)){
-                self.state(states.error);
+        self.filters = ko.observableArray([]).subscribeTo(filterTopic);
 
-                return [];
+        self.comparator = ko.observable(null).subscribeTo(comparatorTopic);
+
+        self.processed = ko.computed(function(){
+            var data = self.data(),
+                filters = self.filters(),
+                filtered = data;
+
+            filters = filters.filter(function(value){
+                return typeof value === 'function';
+            });
+
+            for(var i = 0; i < filters.length; i++){
+                filtered = filtered.filter(filters[i]);
             }
 
-            return self.filtered().slice(start, start + page);
+            var comparator = self.comparator(),
+                sorted = filtered;
+
+            if(typeof comparator === 'function'){
+                sorted = sorted.sort(comparator);
+            }
+
+            return sorted;
         });
 
-        self.getNumberOfDays = ko.computed(function(){
-            var row = self.filtered()[0];
+        self.visible = ko.computed(function(){
+            var start = self.on();
 
-            if(row && Array.isArray(row.days)){
-                return row.days.length;
-            }
-
-            return 0;
+            return self.processed().slice(start, start + self.pageSize());
         });
 
         self.max = ko.computed(function(){
-            var max = self.filtered().length - self.pageSize();
+            var max = self.processed().length - self.pageSize();
 
-            if(max < 0){
-                max = 0;
-            }
-
-            return max;
+            return max < 0 ? 0 : max;
         });
 
         self.percentage = ko.computed({
@@ -80,21 +72,16 @@
         });
 
         self.onWheel = function(event){
-            var start = parseInt(self.on()),
-                max = parseInt(self.max()),
-                end = 0;
-
-            if(isNaN(start) || isNaN(max)){
-                return;
-            }
-
-            var deltaY = event.deltaY;
+            var start = self.on(),
+                max = self.max(),
+                end = 0,
+                deltaY = event.deltaY || event.detail || event.wheelDeltaY;
 
             if(event.webkitDirectionInvertedFromDevice){
                 deltaY = -deltaY;
             }
 
-            if((deltaY || event.detail || event.wheelDelta) < 0){
+            if(deltaY < 0){
                 end = start + 1;
             } else {
                 end = start - 1;

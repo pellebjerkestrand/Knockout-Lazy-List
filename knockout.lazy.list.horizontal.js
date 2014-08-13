@@ -12,8 +12,6 @@
             filterTopic = options.filterTopic || 'LLFT',
             comparatorTopic = options.comparatorTopic || 'LLCT';
 
-        self.initial = false;
-
         self.state = ko.observable(states.initial);
 
         self.on = ko.observable(0);
@@ -50,21 +48,12 @@
         });
 
         self.visibleData = ko.computed(function(){
-            var start = parseInt(self.on()),
-                page = parseInt(self.pageSize());
-
-            if(isNaN(start) || isNaN(page)){
-                self.state(states.error);
-
-                return [];
-            }
-
-            var processed = self.processed();
-
-            var result = [];
+            var start = self.on(),
+                processed = self.processed(),
+                result = [];
 
             for(var j = 0; j < processed.length; j++){
-                result.push(processed[j].days.slice(start, start + page));
+                result.push(processed[j].days.slice(start, start + self.pageSize()));
             }
 
             return result;
@@ -73,16 +62,9 @@
         self.headers = ko.observableArray([]);
 
         self.visibleHeaders = ko.computed(function(){
-            var start = parseInt(self.on()),
-                page = parseInt(self.pageSize());
+            var start = self.on();
 
-            if(isNaN(start) || isNaN(page)){
-                self.state(states.error);
-
-                return [];
-            }
-
-            return self.headers().slice(start, start + page);
+            return self.headers().slice(start, start + self.pageSize());
         });
 
         self.visibleGroups = ko.computed(function(){
@@ -127,21 +109,13 @@
         self.getNumberOfDays = ko.computed(function(){
             var row = self.data()[0];
 
-            if(row && Array.isArray(row.days)){
-                return row.days.length;
-            }
-
-            return 0;
+            return row && Array.isArray(row.days) ? row.days.length : 0;
         });
 
         self.max = ko.computed(function(){
             var max = self.getNumberOfDays() - self.pageSize();
 
-            if(max < 0){
-                max = 0;
-            }
-
-            return max;
+            return max < 0 ? 0 : max;
         });
 
         self.percentage = ko.computed({
@@ -157,21 +131,16 @@
         });
 
         self.onWheel = function(event){
-            var start = parseInt(self.on()),
-                max = parseInt(self.max()),
-                end = 0;
-
-            if(isNaN(start) || isNaN(max)){
-                return;
-            }
-
-            var deltaY = event.deltaY;
+            var start = self.on(),
+                max = self.max(),
+                end = 0,
+                deltaY = event.deltaY || event.detail || event.wheelDeltaY;
 
             if(event.webkitDirectionInvertedFromDevice){
                 deltaY = -deltaY;
             }
 
-            if((deltaY || event.detail || event.wheelDelta) < 0){
+            if((deltaY) < 0){
                 end = start + 1;
             } else {
                 end = start - 1;
@@ -189,7 +158,6 @@
                 type: 'get',
                 beforeSend: function(){
                     self.state(states.loading);
-                    self.initial = true;
                 },
                 success: function(response){
                     self.headers(response.headers);

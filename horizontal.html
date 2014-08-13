@@ -12,20 +12,14 @@
     <link rel="stylesheet" href="style.css" />
     <script>
         $(function(){
+            var reverse = false;
+
             $('[data-sort-alpha]').on('click', function(){
-                var comp = function(a,b){
-                    if(a.company.toLowerCase()[0] < b.company.toLowerCase()[0]){
-                        return -1;
-                    }
-
-                    if(a.company.toLowerCase()[0] > b.company.toLowerCase()[0]){
-                        return 1;
-                    }
-
+                var comp = function(){
                     return 0;
                 };
 
-                if($(this).data('sort-alpha') === 'reverse'){
+                if(reverse){
                     comp = function(a,b){
                         if(a.company.toLowerCase()[0] > b.company.toLowerCase()[0]){
                             return -1;
@@ -37,9 +31,37 @@
 
                         return 0;
                     };
+                } else {
+                    comp = function(a,b){
+                        if(a.company.toLowerCase()[0] < b.company.toLowerCase()[0]){
+                            return -1;
+                        }
+
+                        if(a.company.toLowerCase()[0] > b.company.toLowerCase()[0]){
+                            return 1;
+                        }
+
+                        return 0;
+                    };
                 }
 
+                reverse = !reverse;
+
                 ko.postbox.publish('LLCT', comp);
+            });
+
+            var filters = [
+                    function(value, index, array){
+                        return value.company.toLowerCase().indexOf('a') != -1;
+                    }
+            ];
+
+            $('[data-filter]').on('click', function(){
+                ko.postbox.publish('LLFT', filters);
+            });
+
+            $('[data-defilter]').on('click', function(){
+                ko.postbox.publish('LLFT', []);
             });
         });
     </script>
@@ -47,9 +69,9 @@
 <body>
 <div>
     <div>
-        <span>Sort:</span>
-        <button type="button" data-sort-alpha>A-Z</button>
-        <button type="button" data-sort-alpha="reverse">Z-A</button>
+        <button type="button" data-sort-alpha>Alphabetic sort</button>
+        <button type="button" data-filter>Filter</button>
+        <button type="button" data-defilter>Defilter</button>
     </div>
     <div data-lazy-list-horizontal='{"endpoint": "15.json", "pageSize": 31, "filterTopic": "LLFT", "comparatorTopic": "LLCT"}'>
         <div class="lazy-wrapper">
