@@ -10,31 +10,19 @@
         var self = this,
             pageSize = options.pageSize || 30;
 
+        self.initial = false;
+
         self.state = ko.observable(states.initial);
-
-        self.data = ko.observableArray([]);
-
-        // NOTE: ko.postbox vs. custom binding handler for sending, receiving filtered, sorted data
-
-        self.filtered = ko.computed(function(){
-            return self.data().filter(function(){
-                    // TODO: Filters. Array.prototype.filter(callback[, thisArg]) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-                    return true;
-                }
-            );
-        });
-
-        self.sorted = ko.computed(function(){
-            var sorted = self.filtered();
-
-            // TODO: Sorts. Array.prototype.sort([compareFunction]) https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-
-            return sorted;
-        });
 
         self.on = ko.observable(0);
 
         self.pageSize = ko.observable(pageSize);
+
+        self.data = ko.observableArray([]);
+
+        self.filters = ko.observableArray([]);
+
+        self.comparator = ko.observable(null);
 
         self.visibleData = ko.computed(function(){
             var start = parseInt(self.on()),
@@ -46,15 +34,32 @@
                 return [];
             }
 
-            var filtered = self.filtered();
+            var data = self.data(),
+                filters = self.filters(),
+                filtered = data;
 
-            var data = [];
+            filters = filters.filter(function(value){
+                return typeof value === 'function';
+            });
 
-            for(var i = 0; i < filtered.length; i++){
-                data.push(filtered[i].days.slice(start, start + page));
+            for(var i = 0; i < filters.length; i++){
+                filtered = filtered.filter(filters[i]);
             }
 
-            return data;
+            var comparator = self.comparator(),
+                sorted = filtered;
+
+            if(typeof comparator === 'function'){
+                sorted = sorted.sort(comparator);
+            }
+
+            var result = [];
+
+            for(var j = 0; j < sorted.length; j++){
+                result.push(sorted[j].days.slice(start, start + page));
+            }
+
+            return result;
         });
 
         self.headers = ko.observableArray([]);
@@ -112,7 +117,7 @@
         });
 
         self.getNumberOfDays = ko.computed(function(){
-            var row = self.filtered()[0];
+            var row = self.data()[0];
 
             if(row && Array.isArray(row.days)){
                 return row.days.length;
@@ -142,10 +147,6 @@
             },
             owner: self
         });
-
-        self.noop = function(){
-            console.log(arguments);
-        };
 
         self.onWheel = function(event){
             var start = parseInt(self.on()),
@@ -180,6 +181,7 @@
                 type: 'get',
                 beforeSend: function(){
                     self.state(states.loading);
+                    self.initial = true;
                 },
                 success: function(response){
                     self.headers(response.headers);
