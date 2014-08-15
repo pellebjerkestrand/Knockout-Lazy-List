@@ -5,113 +5,112 @@
     <title>Knockout Lazy List</title>
     <script src="jquery-1.11.1.js"></script>
     <script src="knockout-3.1.0.debug.js"></script>
+    <script src="knockout.mapping-2.4.1.debug.js"></script>
     <script src="knockout-postbox.js"></script>
+    <script src="knockout.lazy.list.control.panel.js"></script>
     <script src="knockout.bindinghandler.scroll.js"></script>
     <script src="knockout.bindinghandler.lazy.scrubber.vertical.js"></script>
     <script src="knockout.lazy.list.vertical.js"></script>
     <link rel="stylesheet" href="style.css" />
     <script>
-        $(function(){
-            var reverse = false;
-
-            $('[data-sort]').on('click', function(){
-                var comp = function(){
-                    return 0;
-                };
-
-                if(reverse){
-                    comp = function(a,b){
-                        if(a.name.toLowerCase()[0] > b.name.toLowerCase()[0]){
-                            return -1;
-                        }
-
-                        if(a.name.toLowerCase()[0] < b.name.toLowerCase()[0]){
-                            return 1;
-                        }
-
-                        return 0;
-                    };
-                } else {
-                    comp = function(a,b){
-                        if(a.name.toLowerCase()[0] < b.name.toLowerCase()[0]){
-                            return -1;
-                        }
-
-                        if(a.name.toLowerCase()[0] > b.name.toLowerCase()[0]){
-                            return 1;
-                        }
-
-                        return 0;
-                    };
-                }
-
-                reverse = !reverse;
-
-                ko.postbox.publish('LLCT', comp);
-            });
-
-            var filter = true;
-
-            $('[data-filter]').on('click', function(){
-                if(filter){
-                    ko.postbox.publish('LLFT', [
-                        function(value, index, array){
-                            return value.name.toLowerCase().indexOf('a') != -1;
-                        },
-                        function(value, index, array){
-                            return value.name.toLowerCase().indexOf('b') != -1;
-                        },
-                        function(value, index, array){
-                            return value.name.toLowerCase().indexOf('c') != -1;
-                        }
-                    ]);
-                } else {
-                    ko.postbox.publish('LLFT', []);
-                }
-
-                filter = !filter;
-            });
-        });
+        /* NOTE: Example */
+        var f = [
+            {
+                "name": "Name",
+                "actions": [
+                    {
+                        "type": "freeTextFilter",
+                        "propertyName": "name"
+                    },{
+                        "type": "alphabeticalAscendingSort",
+                        "propertyName": "name"
+                    },{
+                        "type": "alphabeticalDescendingSort",
+                        "propertyName": "name"
+                    }
+                ]
+            }, {
+                "name": "Email",
+                "actions": [
+                    {
+                        "type": "alphabeticalAscendingSort",
+                        "propertyName": "email"
+                    },{
+                        "type": "alphabeticalDescendingSort",
+                        "propertyName": "email"
+                    },{
+                        "type": "fixedFilter",
+                        "propertyName": "email",
+                        "propertyValue": "berylduffy@zialactic.com",
+                        "displayName": "Email is berylduffy@zialactic.com"
+                    },{
+                        "type": "fixedFilter",
+                        "propertyName": "email",
+                        "propertyValue": "boltontillman@artiq.com",
+                        "displayName": "Email is boltontillman@artiq.com"
+                    }
+                ]
+            }
+        ];
     </script>
 </head>
 <body>
-<div>
+<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Name","actions":[{"type":"freeTextFilter","propertyName":"name"},{"type":"alphabeticalAscendingSort","propertyName":"name"},{"type":"alphabeticalDescendingSort","propertyName":"name"}]},{"name":"Email","actions":[{"type":"alphabeticalAscendingSort","propertyName":"email"},{"type":"alphabeticalDescendingSort","propertyName":"email"},{"type":"fixedFilter","propertyName":"email","propertyValue":"berylduffy@zialactic.com","displayName":"Email is berylduffy@zialactic.com"},{"type":"fixedFilter","propertyName":"email","propertyValue":"boltontillman@artiq.com","displayName":"Email is boltontillman@artiq.com"}]}] }'>
+    <ul data-bind="foreach: panels">
+        <li>
+            <h3 data-bind="text: name"></h3>
+            <ul data-bind="foreach: actions">
+                <li data-bind="template: { name: type + '_tmpl' }"></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div data-lazy-list-vertical='{ "endpoint": "5k.json", "pageSize": 15 }'>
     <div>
-        <button type="button" data-sort>Sort</button>
-        <button type="button" data-filter>Filter</button>
+        Showing <span data-bind="text: visible().length"></span> of <span data-bind="text: processed().length"></span>, total: <span data-bind="text: data().length"></span>
     </div>
-    <div data-lazy-list-vertical='{ "endpoint": "5k.json", "pageSize": 30 }'>
-        <div>
-            Showing <span data-bind="text: visible().length"></span> of <span data-bind="text: processed().length"></span>, total: <span data-bind="text: data().length"></span>
-        </div>
-        <div class="lazy-wrapper">
-            <table class="lazy">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Guid</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                </tr>
-                </thead>
-                <tbody data-bind="foreach: visible, scroll: onWheel">
-                <tr>
-                    <td data-bind="text: name"></td>
-                    <td data-bind="text: guid"></td>
-                    <td data-bind="text: email"></td>
-                    <td data-bind="text: phone"></td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="track">
-                <div class="track-inner">
-                    <div class="track-scrubber" data-bind="lazyScrubberVertical: { percentage: percentage, on: on(), max: max() }">
-                        <span class="text">Scrubber</span>
-                    </div>
+    <div class="lazy-wrapper">
+        <table class="lazy">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Guid</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: visible, scroll: onWheel">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: guid"></td>
+                <td data-bind="text: email"></td>
+                <td data-bind="text: phone"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="track">
+            <div class="track-inner">
+                <div class="track-scrubber" data-bind="lazyScrubberVertical: { percentage: percentage, on: on(), max: max() }">
+                    <span class="text">Scrubber</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script id="freeTextFilter_tmpl" type="text/html">
+    <input type="text" data-bind="value: filter, valueUpdate: 'keyup'" />
+</script>
+<script id="alphabeticalAscendingSort_tmpl" type="text/html">
+    <button type="button" data-bind="click: $root.comparatorHandler">Ascending</button>
+</script>
+<script id="alphabeticalDescendingSort_tmpl" type="text/html">
+    <button type="button" data-bind="click: $root.comparatorHandler">Descending</button>
+</script>
+<script id="fixedFilter_tmpl" type="text/html">
+    <label>
+        <input type="checkbox" data-bind="checked: active" />
+        <span data-bind="text: displayName"></span>
+    </label>
+</script>
 </body>
 </html>
