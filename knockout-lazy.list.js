@@ -80,11 +80,11 @@
                 self.getComparator = function(propertyName, direction){
                     if(direction === directions.ascending){
                         return function(a, b){
-                            if(a[propertyName].toLowerCase()[0] < b[propertyName].toLowerCase()[0]){
+                            if(a[propertyName].toLowerCase() < b[propertyName].toLowerCase()){
                                 return -1;
                             }
 
-                            if(a[propertyName].toLowerCase()[0] > b[propertyName].toLowerCase()[0]){
+                            if(a[propertyName].toLowerCase() > b[propertyName].toLowerCase()){
                                 return 1;
                             }
 
@@ -92,11 +92,11 @@
                         };
                     } else if (direction === directions.descending){
                         return function(a, b){
-                            if(a[propertyName].toLowerCase()[0] > b[propertyName].toLowerCase()[0]){
+                            if(a[propertyName].toLowerCase() > b[propertyName].toLowerCase()){
                                 return -1;
                             }
 
-                            if(a[propertyName].toLowerCase()[0] < b[propertyName].toLowerCase()[0]){
+                            if(a[propertyName].toLowerCase() < b[propertyName].toLowerCase()){
                                 return 1;
                             }
 
