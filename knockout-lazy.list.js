@@ -71,32 +71,31 @@
 
             function LazyListControlPanel(options){
                 var self = this,
-                    controls = options.controls || [],
                     filterTopic = options.filterTopic || 'LLFT',
                     comparatorTopic = options.comparatorTopic || 'LLCT';
 
-                self.panels = controls;
+                self.panels = options.controls || [];
 
                 self.getComparator = function(propertyName, direction){
                     if(direction === directions.ascending){
                         return function(a, b){
-                            if(a[propertyName].toLowerCase() < b[propertyName].toLowerCase()){
+                            if(a[propertyName] < b[propertyName]){
                                 return -1;
                             }
 
-                            if(a[propertyName].toLowerCase() > b[propertyName].toLowerCase()){
+                            if(a[propertyName] > b[propertyName]){
                                 return 1;
                             }
 
                             return 0;
                         };
-                    } else if (direction === directions.descending){
+                    } else if (direction.toLowerCase() === directions.descending.toLowerCase()){
                         return function(a, b){
-                            if(a[propertyName].toLowerCase() > b[propertyName].toLowerCase()){
+                            if(a[propertyName] > b[propertyName]){
                                 return -1;
                             }
 
-                            if(a[propertyName].toLowerCase() < b[propertyName].toLowerCase()){
+                            if(a[propertyName] < b[propertyName]){
                                 return 1;
                             }
 
@@ -114,11 +113,12 @@
                 };
 
                 self.getFilters = function(){
-                    var filters = [],
-                        facets = [];
+                    var filterGroups = [];
 
                     for(var i = 0; i < self.panels.length; i++){
-                        var actions = self.panels[i].actions;
+                        var actions = self.panels[i].actions,
+                            filters = [],
+                            facets = [];
 
                         for(var j = 0; j < actions.length; j++){
                             var action = actions[j];
@@ -127,41 +127,44 @@
                                 var filterText = action.filter();
 
                                 if(filterText.length > 0){
-                                    (function(propertyName, filterText){
+                                    (function(propertyName, text){
                                         filters.push(function(item){
-                                            return item[propertyName].toLowerCase().indexOf(filterText) != -1;
+                                            return item[propertyName].toString().toLowerCase().indexOf(text.toString().toLowerCase()) != -1;
                                         });
                                     })(action.propertyName, filterText);
                                 }
                             } else if (action.type === actionTypes.filter && action.active()){
-                                (function(propertyName, propertyValue){
-                                    facets.push(function(item){
-                                        return item[propertyName].toLowerCase() === propertyValue.toLowerCase();
-                                    });
-                                })(action.propertyName, action.propertyValue);
+                                facets.push({
+                                    name: action.propertyName,
+                                    value: action.propertyValue
+                                });
                             }
                         }
+
+                        if(facets.length > 0){
+                            var facetFilter = (function(facets){
+                                return function(item){
+                                    var match = false;
+
+                                    for(var i = 0; i< facets.length; i++){
+                                        match = item[facets[i].name] === facets[i].value;
+
+                                        if(match){
+                                            break;
+                                        }
+                                    }
+
+                                    return match;
+                                };
+                            })(facets);
+
+                            filters.push(facetFilter);
+                        }
+
+                        filterGroups.push(filters);
                     }
 
-                    if(facets.length > 0){
-                        var facet = function(item){
-                            var match = false;
-
-                            for(var i = 0; i < facets.length; i++){
-                                match = facets[i](item);
-
-                                if(match){
-                                    break;
-                                }
-                            }
-
-                            return match;
-                        };
-
-                        filters.push(facet);
-                    }
-
-                    return filters;
+                    return filterGroups;
                 };
 
                 self.filterHandler = function(){
@@ -346,14 +349,28 @@
                 self.processed = ko.computed(function(){
                     var data = self.data(),
                         filters = self.filters(),
-                        filtered = data;
-
-                    filters = filters.filter(function(value){
-                        return typeof value === 'function';
-                    });
+                        filtered = [],
+                        groupedData = [],
+                        intersection = function(a, b){
+                            return a.filter(function(n){
+                                return b.indexOf(n) != -1;
+                            });
+                        };
 
                     for(var i = 0; i < filters.length; i++){
-                        filtered = filtered.filter(filters[i]);
+                        var filterGroup = filters[i];
+
+                        for(var j = 0; j < filterGroup.length; j++){
+                            groupedData.push(data.filter(filterGroup[j]));
+                        }
+                    }
+
+                    for(var k = 0; k < groupedData.length; k++){
+                        if(k === 0){
+                            filtered = groupedData[0]
+                        } else {
+                            filtered = intersection(filtered, groupedData[k]);
+                        }
                     }
 
                     var comparator = self.comparator(),

@@ -12,48 +12,52 @@
         /* NOTE: Example */
         var f = [
             {
-                "name": "Name",
+                "name": "ID",
                 "actions": [
                     {
                         "type": "freeTextFilter",
-                        "propertyName": "name"
+                        "propertyName": "id"
                     },{
                         "type": "alphabeticalAscendingSort",
-                        "propertyName": "name"
+                        "propertyName": "id"
                     },{
                         "type": "alphabeticalDescendingSort",
-                        "propertyName": "name"
-                    },{
-                        "type": "fixedFilter",
-                        "propertyName": "email",
-                        "propertyValue": "nicholebyrd@accufarm.com",
-                        "displayName": "Email is nicholebyrd@accufarm.com"
-                    },{
-                        "type": "fixedFilter",
-                        "propertyName": "email",
-                        "propertyValue": "kirstenmacias@comvey.com",
-                        "displayName": "Email is kirstenmacias@comvey.com"
+                        "propertyName": "id"
                     }
                 ]
             }, {
-                "name": "Email",
+                "name": "Gender",
                 "actions": [
                     {
-                        "type": "alphabeticalAscendingSort",
-                        "propertyName": "email"
-                    },{
-                        "type": "alphabeticalDescendingSort",
-                        "propertyName": "email"
+                        "type": "fixedFilter",
+                        "propertyName": "gender",
+                        "propertyValue": "female",
+                        "displayName": "Female"
                     },{
                         "type": "fixedFilter",
-                        "propertyName": "email",
-                        "propertyValue": "berylduffy@zialactic.com",
-                        "displayName": "Email is berylduffy@zialactic.com"
+                        "propertyName": "gender",
+                        "propertyValue": "male",
+                        "displayName": "Male"
+                    }
+                ]
+            }, {
+                "name": "Eye Color",
+                "actions": [
+                    {
+                        "type": "fixedFilter",
+                        "propertyName": "eyeColor",
+                        "propertyValue": "green",
+                        "displayName": "Green"
                     },{
                         "type": "fixedFilter",
-                        "propertyName": "email",
-                        "propertyValue": "boltontillman@artiq.com",
-                        "displayName": "Email is boltontillman@artiq.com"
+                        "propertyName": "eyeColor",
+                        "propertyValue": "blue",
+                        "displayName": "Blue"
+                    },{
+                        "type": "fixedFilter",
+                        "propertyName": "eyeColor",
+                        "propertyValue": "brown",
+                        "displayName": "Brown"
                     }
                 ]
             }
@@ -61,7 +65,7 @@
     </script>
 </head>
 <body>
-<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Name","actions":[{"type":"freeTextFilter","propertyName":"name"},{"type":"alphabeticalAscendingSort","propertyName":"name"},{"type":"alphabeticalDescendingSort","propertyName":"name"},{"type":"fixedFilter","propertyName":"email","propertyValue":"nicholebyrd@accufarm.com","displayName":"Email is nicholebyrd@accufarm.com"},{"type":"fixedFilter","propertyName":"email","propertyValue":"kirstenmacias@comvey.com","displayName":"Email is kirstenmacias@comvey.com"}]},{"name":"Email","actions":[{"type":"alphabeticalAscendingSort","propertyName":"email"},{"type":"alphabeticalDescendingSort","propertyName":"email"},{"type":"fixedFilter","propertyName":"email","propertyValue":"berylduffy@zialactic.com","displayName":"Email is berylduffy@zialactic.com"},{"type":"fixedFilter","propertyName":"email","propertyValue":"boltontillman@artiq.com","displayName":"Email is boltontillman@artiq.com"}]}] }'>
+<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"ID","actions":[{"type":"freeTextFilter","propertyName":"id"},{"type":"alphabeticalAscendingSort","propertyName":"id"},{"type":"alphabeticalDescendingSort","propertyName":"id"}]},{"name":"Gender","actions":[{"type":"fixedFilter","propertyName":"gender","propertyValue":"female","displayName":"Female"},{"type":"fixedFilter","propertyName":"gender","propertyValue":"male","displayName":"Male"}]},{"name":"Eye Color","actions":[{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"green","displayName":"Green"},{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"blue","displayName":"Blue"},{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"brown","displayName":"Brown"}]}] }'>
     <ul data-bind="foreach: panels">
         <li>
             <h3 data-bind="text: name"></h3>
@@ -71,7 +75,7 @@
         </li>
     </ul>
 </div>
-<div data-lazy-list-vertical='{ "endpoint": "5k.json", "pageSize": 15 }'>
+<div data-lazy-list-vertical='{ "endpoint": "1k.json", "pageSize": 15 }'>
     <div>
         Showing <span data-bind="text: visible().length"></span> of <span data-bind="text: processed().length"></span>, total: <span data-bind="text: data().length"></span>
     </div>
@@ -79,18 +83,18 @@
         <table class="lazy">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
-                <th>Guid</th>
-                <th>Email</th>
-                <th>Phone</th>
+                <th>Gender</th>
+                <th>Eye Color</th>
             </tr>
             </thead>
             <tbody data-bind="foreach: visible, scroll: onWheel">
             <tr>
+                <td data-bind="text: id"></td>
                 <td data-bind="text: name"></td>
-                <td data-bind="text: guid"></td>
-                <td data-bind="text: email"></td>
-                <td data-bind="text: phone"></td>
+                <td data-bind="text: gender"></td>
+                <td data-bind="text: eyeColor"></td>
             </tr>
             </tbody>
         </table>
