@@ -23,6 +23,16 @@
                     },{
                         "type": "alphabeticalDescendingSort",
                         "propertyName": "name"
+                    },{
+                        "type": "fixedFilter",
+                        "propertyName": "email",
+                        "propertyValue": "nicholebyrd@accufarm.com",
+                        "displayName": "Email is nicholebyrd@accufarm.com"
+                    },{
+                        "type": "fixedFilter",
+                        "propertyName": "email",
+                        "propertyValue": "kirstenmacias@comvey.com",
+                        "displayName": "Email is kirstenmacias@comvey.com"
                     }
                 ]
             }, {
@@ -51,7 +61,7 @@
     </script>
 </head>
 <body>
-<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Name","actions":[{"type":"freeTextFilter","propertyName":"name"},{"type":"alphabeticalAscendingSort","propertyName":"name"},{"type":"alphabeticalDescendingSort","propertyName":"name"}]},{"name":"Email","actions":[{"type":"alphabeticalAscendingSort","propertyName":"email"},{"type":"alphabeticalDescendingSort","propertyName":"email"},{"type":"fixedFilter","propertyName":"email","propertyValue":"berylduffy@zialactic.com","displayName":"Email is berylduffy@zialactic.com"},{"type":"fixedFilter","propertyName":"email","propertyValue":"boltontillman@artiq.com","displayName":"Email is boltontillman@artiq.com"}]}] }'>
+<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Name","actions":[{"type":"freeTextFilter","propertyName":"name"},{"type":"alphabeticalAscendingSort","propertyName":"name"},{"type":"alphabeticalDescendingSort","propertyName":"name"},{"type":"fixedFilter","propertyName":"email","propertyValue":"nicholebyrd@accufarm.com","displayName":"Email is nicholebyrd@accufarm.com"},{"type":"fixedFilter","propertyName":"email","propertyValue":"kirstenmacias@comvey.com","displayName":"Email is kirstenmacias@comvey.com"}]},{"name":"Email","actions":[{"type":"alphabeticalAscendingSort","propertyName":"email"},{"type":"alphabeticalDescendingSort","propertyName":"email"},{"type":"fixedFilter","propertyName":"email","propertyValue":"berylduffy@zialactic.com","displayName":"Email is berylduffy@zialactic.com"},{"type":"fixedFilter","propertyName":"email","propertyValue":"boltontillman@artiq.com","displayName":"Email is boltontillman@artiq.com"}]}] }'>
     <ul data-bind="foreach: panels">
         <li>
             <h3 data-bind="text: name"></h3>

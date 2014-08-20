@@ -35,12 +35,27 @@
                         "displayName": "Company is Xinware"
                     }
                 ]
+            },{
+                "name": "Company",
+                "actions": [
+                    {
+                        "type": "fixedFilter",
+                        "propertyName": "company",
+                        "propertyValue": "Kaggle",
+                        "displayName": "Company is Kaggle"
+                    },{
+                        "type": "fixedFilter",
+                        "propertyName": "company",
+                        "propertyValue": "Talkalot",
+                        "displayName": "Company is Talkalot"
+                    }
+                ]
             }
         ];
     </script>
 </head>
 <body>
-<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Company","actions":[{"type":"freeTextFilter","propertyName":"company"},{"type":"alphabeticalAscendingSort","propertyName":"company"},{"type":"alphabeticalDescendingSort","propertyName":"company"},{"type":"fixedFilter","propertyName":"company","propertyValue":"Parleynet","displayName":"Company is Parleynet"},{"type":"fixedFilter","propertyName":"company","propertyValue":"Xinware","displayName":"Company is Xinware"}]}] }'>
+<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Company","actions":[{"type":"freeTextFilter","propertyName":"company"},{"type":"alphabeticalAscendingSort","propertyName":"company"},{"type":"alphabeticalDescendingSort","propertyName":"company"},{"type":"fixedFilter","propertyName":"company","propertyValue":"Parleynet","displayName":"Company is Parleynet"},{"type":"fixedFilter","propertyName":"company","propertyValue":"Xinware","displayName":"Company is Xinware"}]},{"name":"Company","actions":[{"type":"fixedFilter","propertyName":"company","propertyValue":"Kaggle","displayName":"Company is Kaggle"},{"type":"fixedFilter","propertyName":"company","propertyValue":"Talkalot","displayName":"Company is Talkalot"}]}] }'>
     <ul data-bind="foreach: panels">
         <li>
             <h3 data-bind="text: name"></h3>
