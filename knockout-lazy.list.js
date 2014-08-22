@@ -198,8 +198,6 @@
                     ko.postbox.publish(filterTopic, self.getFilters());
                 };
 
-                ko.postbox.subscribe(dataTopic, self.filterHandler);
-
                 self.freeTextFilterHandler = self.filterHandler;
 
                 self.fixedFilterHandler = self.filterHandler;
@@ -429,7 +427,7 @@
                     ko.postbox.publish(clickTopic, item);
                 };
 
-                ko.utils.extend(self, new extensionModel(self.on, self.processed, self.pageSize, self.state, self.data, options.endpoint, dataTopic));
+                ko.utils.extend(self, new extensionModel(self.on, self.processed, self.pageSize, self.state, self.data, options.endpoint));
 
                 self.percentage = ko.computed({
                     read: function(){
