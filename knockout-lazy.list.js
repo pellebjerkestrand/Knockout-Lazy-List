@@ -13,16 +13,16 @@
 
     var scrubberFactory = {
         horizontalConfiguration: {
-            eventDirection: 'pageX',
-            parentEdge: 'left',
-            offset: 'offsetWidth',
-            scrubberProperty: 'left'
+            eventPosition: 'clientY',
+            edge: 'left',
+            offset: 'offsetLeft',
+            size: 'width'
         },
         verticalConfiguration: {
-            eventDirection: 'pageY',
-            parentEdge: 'top',
-            offset: 'offsetHeight',
-            scrubberProperty: 'top'
+            eventPosition: 'clientY',
+            edge: 'top',
+            offset: 'offsetTop',
+            size: 'height'
         },
         getScrubber: function(configuration){
             configuration = configuration || scrubberFactory.verticalConfiguration;
@@ -36,8 +36,25 @@
                         $(document.body).addClass('no-select');
 
                         document.onmousemove = function(event){
-                            // TODO: Fix bug
-                            percentage(((event[configuration.eventDirection] - element.parentNode.getBoundingClientRect()[configuration.parentEdge]) - (element[configuration.offset] / 2)) / element.parentNode[configuration.offset]);
+                            var scrubberRect = element.getBoundingClientRect(),
+                                trackRect = element.parentNode.getBoundingClientRect(),
+                                mousePos = event[configuration.eventPosition],
+                                trackEdge = trackRect[configuration.edge],
+                                scrubberSize = scrubberRect[configuration.size],
+                                trackSize = trackRect[configuration.size],
+                                mousePosRelative = trackEdge - mousePos + (scrubberSize / 2);
+
+                            if(mousePosRelative > 0){
+                                mousePosRelative = 0;
+                            } else {
+                                mousePosRelative = Math.abs(mousePosRelative);
+                            }
+
+                            var percent = (mousePosRelative / trackSize);
+
+                            if(percent >= 0 && percent <= 1){
+                                percentage(percent);
+                            }
                         };
 
                         document.onmouseup = function(){
@@ -51,7 +68,7 @@
                         on = options.on || 0,
                         max = options.max || 0;
 
-                    $(element).css(configuration.scrubberProperty, (on / max * 100) + "%");
+                    $(element).css(configuration.edge, (on / max * 100) + "%");
                 }
             };
         }
@@ -424,7 +441,7 @@
                         end = 0,
                         deltaY = event.deltaY || event.detail || event.wheelDeltaY;
 
-                    if(event.webkitDirectionInvertedFromDevice){
+                    if(!event.webkitDirectionInvertedFromDevice){
                         deltaY = -deltaY;
                     }
 
