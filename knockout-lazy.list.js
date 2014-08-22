@@ -13,7 +13,7 @@
 
     var scrubberFactory = {
         horizontalConfiguration: {
-            eventPosition: 'clientY',
+            eventPosition: 'clientX',
             edge: 'left',
             offset: 'offsetLeft',
             size: 'width'
