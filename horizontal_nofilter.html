@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Knockout Lazy List</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script src="knockout-3.1.0.debug.js"></script>
+    <script src="knockout-postbox.js"></script>
+    <script src="knockout-lazy.list.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        /* NOTE: Example */
+        var f = [
+            {
+                "name": "Company",
+                "actions": [
+                    {
+                        "type": "freeTextFilter",
+                        "propertyName": "company"
+                    },{
+                        "type": "alphabeticalAscendingSort",
+                        "propertyName": "company"
+                    },{
+                        "type": "alphabeticalDescendingSort",
+                        "propertyName": "company"
+                    }
+                ]
+            }
+        ];
+    </script>
+</head>
+<body>
+<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Company","actions":[{"type":"freeTextFilter","propertyName":"company"},{"type":"alphabeticalAscendingSort","propertyName":"company"},{"type":"alphabeticalDescendingSort","propertyName":"company"}]}] }'>
+    <ul data-bind="foreach: panels">
+        <li>
+            <h3 data-bind="text: name"></h3>
+            <ul data-bind="foreach: actions">
+                <li data-bind="template: { name: type + '_tmpl' }"></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div data-lazy-list-horizontal='{"endpoint": "15.json", "pageSize": 31, "filterTopic": "LLFT", "comparatorTopic": "LLCT"}'>
+    <div class="lazy-wrapper">
+        <table class="lazy lazy-horizontal">
+            <thead>
+            <tr>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">Owner</th>
+                <th rowspan="2">Active</th>
+                <!-- ko foreach: $root.visibleGroups -->
+                <th data-bind="text: title, attr: { colspan: columns }"></th>
+                <!-- /ko -->
+            </tr>
+            <tr>
+                <!-- ko foreach: $root.visibleHeaders -->
+                <th data-bind="text: day, attr: { title: info }"></th>
+                <!-- /ko -->
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: processed, scroll: onWheel">
+            <tr>
+                <td data-bind="text: company"></td>
+                <td data-bind="text: owner"></td>
+                <td data-bind="text: active"></td>
+                <!-- ko foreach: $root.visibleData()[$index()] -->
+                <td data-bind="text: $data.text"></td>
+                <!-- /ko -->
+            </tr>
+            </tbody>
+        </table>
+        <div class="track track-horizontal">
+            <div class="track-inner">
+                <div class="track-scrubber" data-bind="lazyScrubberHorizontal: { percentage: percentage, on: on(), max: max() }">
+                    <span class="text">Scrubber</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="freeTextFilter_tmpl" type="text/html">
+    <input type="text" data-bind="value: filter, valueUpdate: 'keyup'" />
+</script>
+<script id="alphabeticalAscendingSort_tmpl" type="text/html">
+    <button type="button" data-bind="click: $root.comparatorHandler">Ascending</button>
+</script>
+<script id="alphabeticalDescendingSort_tmpl" type="text/html">
+    <button type="button" data-bind="click: $root.comparatorHandler">Descending</button>
+</script>
+<script id="fixedFilter_tmpl" type="text/html">
+    <label>
+        <input type="checkbox" data-bind="checked: active" />
+        <span data-bind="text: displayName"></span>
+    </label>
+</script>
+</body>
+</html>

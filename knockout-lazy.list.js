@@ -1,4 +1,10 @@
 (function(document, $, ko){
+    function intersection(a, b){
+        return a.filter(function(n){
+            return b.indexOf(n) != -1;
+        });
+    }
+
     var scrollFactory = {
         getScroll: function(){
             var wheelEvent = ("onwheel" in document || document.documentMode >= 9) ? "wheel" : (document.onmousewheel !== undefined ? "mousewheel" : "DOMMouseScroll");
@@ -226,7 +232,7 @@
             loading: 'loading',
             success: 'success'
         },
-        horizontalModel: function(on, processed, pageSize, state, data, endpoint, dataTopic){
+        horizontalModel: function(on, processed, pageSize, state, data, endpoint){
             var self = this;
 
             self.visibleData = ko.computed(function(){
@@ -311,7 +317,6 @@
                         self.headers(response.headers);
                         data(response.data);
                         state(listFactory.states.success);
-                        ko.postbox.publish(dataTopic, true);
                     },
                     error: function(){
                         state(listFactory.states.error);
@@ -319,7 +324,7 @@
                 });
             };
         },
-        verticalModel: function(on, processed, pageSize, state, data, endpoint, dataTopic){
+        verticalModel: function(on, processed, pageSize, state, data, endpoint){
             var self = this;
 
             self.visible = ko.computed(function(){
@@ -344,7 +349,6 @@
                     success: function(result){
                         data(result);
                         state(listFactory.states.success);
-                        ko.postbox.publish(dataTopic, true);
                     },
                     error: function(){
                         state(listFactory.states.error);
@@ -377,27 +381,24 @@
                 self.processed = ko.computed(function(){
                     var data = self.data(),
                         filters = self.filters(),
-                        filtered = [],
-                        groupedData = [],
-                        intersection = function(a, b){
-                            return a.filter(function(n){
-                                return b.indexOf(n) != -1;
-                            });
-                        };
+                        filtered = data,
+                        groupedData = [];
 
-                    for(var i = 0; i < filters.length; i++){
-                        var filterGroup = filters[i];
+                    if(filters.length > 0){
+                        for(var i = 0; i < filters.length; i++){
+                            var filterGroup = filters[i];
 
-                        for(var j = 0; j < filterGroup.length; j++){
-                            groupedData.push(data.filter(filterGroup[j]));
+                            for(var j = 0; j < filterGroup.length; j++){
+                                groupedData.push(data.filter(filterGroup[j]));
+                            }
                         }
-                    }
 
-                    for(var k = 0; k < groupedData.length; k++){
-                        if(k === 0){
-                            filtered = groupedData[0]
-                        } else {
-                            filtered = intersection(filtered, groupedData[k]);
+                        for(var k = 0; k < groupedData.length; k++){
+                            if(k === 0){
+                                filtered = groupedData[0]
+                            } else {
+                                filtered = intersection(filtered, groupedData[k]);
+                            }
                         }
                     }
 
@@ -405,7 +406,7 @@
                         sorted = filtered;
 
                     if(typeof comparator === 'function'){
-                        sorted = sorted.sort(comparator);
+                        sorted.sort(comparator);
                     }
 
                     self.on(0);
