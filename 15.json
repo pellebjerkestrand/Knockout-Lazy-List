@@ -1829,6 +1829,8 @@
     "data": [
         {
             "company": "Parleynet",
+            "owner": "Creuna",
+            "active": true,
             "days": [
                 {
                     "text": ""
@@ -2929,6 +2931,8 @@
         },
         {
             "company": "Kaggle",
+            "owner": "Creuna",
+            "active": true,
             "days": [
                 {
                     "text": "✪"
@@ -4029,6 +4033,8 @@
         },
         {
             "company": "Talkalot",
+            "owner": "Creuna",
+            "active": true,
             "days": [
                 {
                     "text": ""
@@ -5129,6 +5135,8 @@
         },
         {
             "company": "Affluex",
+            "owner": "Creuna",
+            "active": false,
             "days": [
                 {
                     "text": ""
@@ -6229,6 +6237,8 @@
         },
         {
             "company": "Quailcom",
+            "owner": "Creuna",
+            "active": false,
             "days": [
                 {
                     "text": ""
@@ -7329,6 +7339,8 @@
         },
         {
             "company": "Xinware",
+            "owner": "Creuna",
+            "active": false,
             "days": [
                 {
                     "text": ""
@@ -8429,6 +8441,8 @@
         },
         {
             "company": "Optique",
+            "owner": "Creuna",
+            "active": true,
             "days": [
                 {
                     "text": ""
@@ -9529,6 +9543,8 @@
         },
         {
             "company": "Dentrex",
+            "owner": "Breaking Wind",
+            "active": true,
             "days": [
                 {
                     "text": ""
@@ -10629,6 +10645,8 @@
         },
         {
             "company": "Bitendrex",
+            "owner": "Breaking Wind",
+            "active": true,
             "days": [
                 {
                     "text": ""
@@ -11729,6 +11747,8 @@
         },
         {
             "company": "Grupoli",
+            "owner": "Breaking Wind",
+            "active": false,
             "days": [
                 {
                     "text": ""
@@ -12829,6 +12849,8 @@
         },
         {
             "company": "Zillanet",
+            "owner": "Breaking Wind",
+            "active": false,
             "days": [
                 {
                     "text": ""
@@ -13929,6 +13951,8 @@
         },
         {
             "company": "Yurture",
+            "owner": "Breaking Wind",
+            "active": false,
             "days": [
                 {
                     "text": ""
@@ -15029,6 +15053,8 @@
         },
         {
             "company": "Comstruct",
+            "owner": "Breaking Wind",
+            "active": true,
             "days": [
                 {
                     "text": "✪"
@@ -16129,6 +16155,8 @@
         },
         {
             "company": "Rodeocean",
+            "owner": "Breaking Wind",
+            "active": true,
             "days": [
                 {
                     "text": ""
@@ -17229,6 +17257,8 @@
         },
         {
             "company": "Ersum",
+            "owner": "Breaking Wind",
+            "active": true,
             "days": [
                 {
                     "text": ""

@@ -36,6 +36,7 @@
                         $(document.body).addClass('no-select');
 
                         document.onmousemove = function(event){
+                            // TODO: Fix bug
                             percentage(((event[configuration.eventDirection] - element.parentNode.getBoundingClientRect()[configuration.parentEdge]) - (element[configuration.offset] / 2)) / element.parentNode[configuration.offset]);
                         };
 
@@ -71,6 +72,7 @@
 
             function LazyListControlPanel(options){
                 var self = this,
+                    dataTopic = options.dataTopic || 'LLDT',
                     filterTopic = options.filterTopic || 'LLFT',
                     comparatorTopic = options.comparatorTopic || 'LLCT';
 
@@ -159,6 +161,8 @@
                             })(facets);
 
                             filters.push(facetFilter);
+                        } else {
+                            filters.push(function(){ return true; });
                         }
 
                         filterGroups.push(filters);
@@ -170,6 +174,8 @@
                 self.filterHandler = function(){
                     ko.postbox.publish(filterTopic, self.getFilters());
                 };
+
+                ko.postbox.subscribe(dataTopic, self.filterHandler);
 
                 self.freeTextFilterHandler = self.filterHandler;
 
@@ -203,7 +209,7 @@
             loading: 'loading',
             success: 'success'
         },
-        horizontalModel: function(on, processed, pageSize, state, data, endpoint){
+        horizontalModel: function(on, processed, pageSize, state, data, endpoint, dataTopic){
             var self = this;
 
             self.visibleData = ko.computed(function(){
@@ -288,6 +294,7 @@
                         self.headers(response.headers);
                         data(response.data);
                         state(listFactory.states.success);
+                        ko.postbox.publish(dataTopic, true);
                     },
                     error: function(){
                         state(listFactory.states.error);
@@ -295,7 +302,7 @@
                 });
             };
         },
-        verticalModel: function(on, processed, pageSize, state, data, endpoint){
+        verticalModel: function(on, processed, pageSize, state, data, endpoint, dataTopic){
             var self = this;
 
             self.visible = ko.computed(function(){
@@ -320,6 +327,7 @@
                     success: function(result){
                         data(result);
                         state(listFactory.states.success);
+                        ko.postbox.publish(dataTopic, true);
                     },
                     error: function(){
                         state(listFactory.states.error);
@@ -331,8 +339,11 @@
             function LazyList(extensionModel, options){
                 var self = this,
                     pageSize = options.pageSize || 30,
+                    dataTopic = options.dataTopic || 'LLDT',
                     filterTopic = options.filterTopic || 'LLFT',
-                    comparatorTopic = options.comparatorTopic || 'LLCT';
+                    comparatorTopic = options.comparatorTopic || 'LLCT',
+                    exportTopic = options.exportTopic || 'LLET',
+                    clickTopic = options.clickTopic || 'LLCLT';
 
                 self.on = ko.observable(0);
 
@@ -385,7 +396,15 @@
                     return sorted;
                 });
 
-                ko.utils.extend(self, new extensionModel(self.on, self.processed, self.pageSize, self.state, self.data, options.endpoint));
+                self.exportList = function() {
+                    ko.postbox.publish(exportTopic, self.processed());
+                };
+
+                self.cellClick = function(item) {
+                    ko.postbox.publish(clickTopic, item);
+                };
+
+                ko.utils.extend(self, new extensionModel(self.on, self.processed, self.pageSize, self.state, self.data, options.endpoint, dataTopic));
 
                 self.percentage = ko.computed({
                     read: function(){

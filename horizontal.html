@@ -23,31 +23,36 @@
                     },{
                         "type": "alphabeticalDescendingSort",
                         "propertyName": "company"
-                    },{
-                        "type": "fixedFilter",
-                        "propertyName": "company",
-                        "propertyValue": "Parleynet",
-                        "displayName": "Company is Parleynet"
-                    },{
-                        "type": "fixedFilter",
-                        "propertyName": "company",
-                        "propertyValue": "Xinware",
-                        "displayName": "Company is Xinware"
                     }
                 ]
             },{
-                "name": "Company",
+                "name": "Owner",
                 "actions": [
                     {
                         "type": "fixedFilter",
-                        "propertyName": "company",
-                        "propertyValue": "Kaggle",
-                        "displayName": "Company is Kaggle"
+                        "propertyName": "owner",
+                        "propertyValue": "Creuna",
+                        "displayName": "Owner is Creuna"
                     },{
                         "type": "fixedFilter",
-                        "propertyName": "company",
-                        "propertyValue": "Talkalot",
-                        "displayName": "Company is Talkalot"
+                        "propertyName": "owner",
+                        "propertyValue": "Breaking Wind",
+                        "displayName": "Owner is Breaking Wind"
+                    }
+                ]
+            },{
+                "name": "Active",
+                "actions": [
+                    {
+                        "type": "fixedFilter",
+                        "propertyName": "active",
+                        "propertyValue": true,
+                        "displayName": "Active"
+                    },{
+                        "type": "fixedFilter",
+                        "propertyName": "active",
+                        "propertyValue": false,
+                        "displayName": "Inactive"
                     }
                 ]
             }
@@ -55,7 +60,7 @@
     </script>
 </head>
 <body>
-<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Company","actions":[{"type":"freeTextFilter","propertyName":"company"},{"type":"alphabeticalAscendingSort","propertyName":"company"},{"type":"alphabeticalDescendingSort","propertyName":"company"},{"type":"fixedFilter","propertyName":"company","propertyValue":"Parleynet","displayName":"Company is Parleynet"},{"type":"fixedFilter","propertyName":"company","propertyValue":"Xinware","displayName":"Company is Xinware"}]},{"name":"Company","actions":[{"type":"fixedFilter","propertyName":"company","propertyValue":"Kaggle","displayName":"Company is Kaggle"},{"type":"fixedFilter","propertyName":"company","propertyValue":"Talkalot","displayName":"Company is Talkalot"}]}] }'>
+<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Company","actions":[{"type":"freeTextFilter","propertyName":"company"},{"type":"alphabeticalAscendingSort","propertyName":"company"},{"type":"alphabeticalDescendingSort","propertyName":"company"}]},{"name":"Owner","actions":[{"type":"fixedFilter","propertyName":"owner","propertyValue":"Creuna","displayName":"Owner is Creuna"},{"type":"fixedFilter","propertyName":"owner","propertyValue":"Breaking Wind","displayName":"Owner is Breaking Wind"}]},{"name":"Active","actions":[{"type":"fixedFilter","propertyName":"active","propertyValue":true,"displayName":"Active"},{"type":"fixedFilter","propertyName":"active","propertyValue":false,"displayName":"Inactive"}]}] }'>
     <ul data-bind="foreach: panels">
         <li>
             <h3 data-bind="text: name"></h3>
@@ -71,6 +76,8 @@
             <thead>
             <tr>
                 <th rowspan="2">Name</th>
+                <th rowspan="2">Owner</th>
+                <th rowspan="2">Active</th>
                 <!-- ko foreach: $root.visibleGroups -->
                 <th data-bind="text: title, attr: { colspan: columns }"></th>
                 <!-- /ko -->
@@ -84,6 +91,8 @@
             <tbody data-bind="foreach: processed, scroll: onWheel">
             <tr>
                 <td data-bind="text: company"></td>
+                <td data-bind="text: owner"></td>
+                <td data-bind="text: active"></td>
                 <!-- ko foreach: $root.visibleData()[$index()] -->
                 <td data-bind="text: $data.text"></td>
                 <!-- /ko -->
