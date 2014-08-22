@@ -378,11 +378,18 @@
 
                 self.comparator = ko.observable(null).subscribeTo(comparatorTopic);
 
+                self.kicker = ko.observable();
+
+                ko.postbox.subscribe(dataTopic, function(value){
+                    self.kicker.notifySubscribers(value);
+                });
+
                 self.processed = ko.computed(function(){
                     var data = self.data(),
                         filters = self.filters(),
                         filtered = data,
-                        groupedData = [];
+                        groupedData = [],
+                        kicker = self.kicker();
 
                     if(filters.length > 0){
                         for(var i = 0; i < filters.length; i++){
