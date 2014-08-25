@@ -5,6 +5,43 @@
         });
     }
 
+    function filter(data, filters){
+        if(filters.length > 0){
+            var filtered = data,
+                groupedData = [];
+
+            for(var i = 0; i < filters.length; i++){
+                var filterGroup = filters[i];
+
+                for(var j = 0; j < filterGroup.length; j++){
+                    groupedData.push(data.filter(filterGroup[j]));
+                }
+            }
+
+            for(var k = 0; k < groupedData.length; k++){
+                if(k === 0){
+                    filtered = groupedData[0]
+                } else {
+                    filtered = intersection(filtered, groupedData[k]);
+                }
+            }
+
+            return filtered;
+        }
+
+        return data;
+    }
+
+    function sort(data, comparator){
+        var sorted = data;
+
+        if(typeof comparator === 'function'){
+            sorted.sort(comparator);
+        }
+
+        return sorted;
+    }
+
     var scrollFactory = {
         getScroll: function(){
             var wheelEvent = ("onwheel" in document || document.documentMode >= 9) ? "wheel" : (document.onmousewheel !== undefined ? "mousewheel" : "DOMMouseScroll");
@@ -56,11 +93,9 @@
                                 mousePosRelative = Math.abs(mousePosRelative);
                             }
 
-                            var percent = (mousePosRelative / trackSize);
+                            var percent = Math.min(1, Math.max((mousePosRelative / trackSize), 0));
 
-                            if(percent >= 0 && percent <= 1){
-                                percentage(percent);
-                            }
+                            percentage(percent);
                         };
 
                         document.onmouseup = function(){
@@ -95,7 +130,6 @@
 
             function LazyListControlPanel(options){
                 var self = this,
-                    dataTopic = options.dataTopic || 'LLDT',
                     filterTopic = options.filterTopic || 'LLFT',
                     comparatorTopic = options.comparatorTopic || 'LLCT';
 
@@ -304,7 +338,7 @@
                 return max < 0 ? 0 : max;
             });
 
-            self.init = function(){
+            self.load = function(){
                 $.ajax({
                     url: endpoint,
                     type: 'get',
@@ -337,7 +371,11 @@
                 return max < 0 ? 0 : max;
             });
 
-            self.init = function(){
+            self.max.subscribe(function(){
+                on(0);
+            });
+
+            self.load = function(){
                 $.ajax({
                     url: endpoint,
                     type: 'get',
@@ -358,11 +396,11 @@
             function LazyList(extensionModel, options){
                 var self = this,
                     pageSize = options.pageSize || 30,
-                    dataTopic = options.dataTopic || 'LLDT',
                     filterTopic = options.filterTopic || 'LLFT',
                     comparatorTopic = options.comparatorTopic || 'LLCT',
                     exportTopic = options.exportTopic || 'LLET',
-                    clickTopic = options.clickTopic || 'LLCLT';
+                    clickTopic = options.clickTopic || 'LLCLT',
+                    dataTopic = options.dataTopic || 'LLDT';
 
                 self.on = ko.observable(0);
 
@@ -376,47 +414,10 @@
 
                 self.comparator = ko.observable(null).subscribeTo(comparatorTopic);
 
-                self.kicker = ko.observable();
-
-                ko.postbox.subscribe(dataTopic, function(value){
-                    self.kicker.notifySubscribers(value);
-                });
+                self.previousMax = false;
 
                 self.processed = ko.computed(function(){
-                    var data = self.data(),
-                        filters = self.filters(),
-                        filtered = data,
-                        groupedData = [],
-                        kicker = self.kicker();
-
-                    if(filters.length > 0){
-                        for(var i = 0; i < filters.length; i++){
-                            var filterGroup = filters[i];
-
-                            for(var j = 0; j < filterGroup.length; j++){
-                                groupedData.push(data.filter(filterGroup[j]));
-                            }
-                        }
-
-                        for(var k = 0; k < groupedData.length; k++){
-                            if(k === 0){
-                                filtered = groupedData[0]
-                            } else {
-                                filtered = intersection(filtered, groupedData[k]);
-                            }
-                        }
-                    }
-
-                    var comparator = self.comparator(),
-                        sorted = filtered;
-
-                    if(typeof comparator === 'function'){
-                        sorted.sort(comparator);
-                    }
-
-                    self.on(0);
-
-                    return sorted;
+                    return sort(filter(self.data(), self.filters()), self.comparator());
                 });
 
                 self.exportList = function() {
@@ -463,9 +464,15 @@
                     }
                 };
 
-                if(typeof self['init'] === 'function'){
-                    self.init();
-                }
+                self.reload = function(){
+                    if(typeof self['load'] === 'function'){
+                        self.load();
+                    }
+                };
+
+                self.reload();
+
+                ko.postbox.subscribe(dataTopic, self.reload);
             }
 
             return new LazyList(extensionModel, options);
