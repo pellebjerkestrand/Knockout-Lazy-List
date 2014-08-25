@@ -342,6 +342,7 @@
                 $.ajax({
                     url: endpoint,
                     type: 'get',
+                    cache: false,
                     beforeSend: function(){
                         state(listFactory.states.loading);
                     },
@@ -379,6 +380,7 @@
                 $.ajax({
                     url: endpoint,
                     type: 'get',
+                    cache: false,
                     beforeSend: function(){
                         state(listFactory.states.loading);
                     },
