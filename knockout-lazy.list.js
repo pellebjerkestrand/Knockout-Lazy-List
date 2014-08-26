@@ -20,7 +20,7 @@
 
             for(var k = 0; k < groupedData.length; k++){
                 if(k === 0){
-                    filtered = groupedData[0]
+                    filtered = groupedData[0];
                 } else {
                     filtered = intersection(filtered, groupedData[k]);
                 }
@@ -445,7 +445,7 @@
                 });
 
                 self.shouldShowScrubber = ko.computed(function(){
-                    // TODO: Implementation is different for horizontal and vertical. Only vertical works with this.
+                    // NOTE: Implementation is different for horizontal and vertical. Only vertical works with this.
                     return self.processed().length > self.pageSize();
                 });
 
