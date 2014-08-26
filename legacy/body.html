@@ -1,69 +1,3 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Knockout Lazy List</title>
-    <script src="jquery-1.11.1.js"></script>
-    <script src="knockout-3.2.0.js"></script>
-    <script src="knockout-postbox.js"></script>
-    <script src="knockout-lazy.list.js"></script>
-    <link rel="stylesheet" href="legacy/tjenestekalender.css" />
-    <link rel="stylesheet" href="legacy/reset.css" />
-    <link rel="stylesheet" href="legacy/structure.css" />
-    <link rel="stylesheet" href="legacy/frontpage.css" />
-    <link rel="stylesheet" href="legacy/style.css" />
-    <link rel="stylesheet" href="style.css" />
-    <script>
-        /* NOTE: Example */
-        var f = [
-            {
-                "name": "Company",
-                "actions": [
-                    {
-                        "type": "freeTextFilter",
-                        "propertyName": "company"
-                    },{
-                        "type": "alphabeticalAscendingSort",
-                        "propertyName": "company"
-                    },{
-                        "type": "alphabeticalDescendingSort",
-                        "propertyName": "company"
-                    }
-                ]
-            },{
-                "name": "Owner",
-                "actions": [
-                    {
-                        "type": "fixedFilter",
-                        "propertyName": "owner",
-                        "propertyValue": "Creuna",
-                        "displayName": "Owner is Creuna"
-                    },{
-                        "type": "fixedFilter",
-                        "propertyName": "owner",
-                        "propertyValue": "Breaking Wind",
-                        "displayName": "Owner is Breaking Wind"
-                    }
-                ]
-            },{
-                "name": "Active",
-                "actions": [
-                    {
-                        "type": "fixedFilter",
-                        "propertyName": "active",
-                        "propertyValue": true,
-                        "displayName": "Active"
-                    },{
-                        "type": "fixedFilter",
-                        "propertyName": "active",
-                        "propertyValue": false,
-                        "displayName": "Inactive"
-                    }
-                ]
-            }
-        ];
-    </script>
-</head>
 <body>
 <header>
     <div id="header">
@@ -131,15 +65,15 @@
 
 <div id="wrapper">
 
-    <div style="clear: both;"></div>
-    <div id="mainContainer" class="left noindex">
-        <div class="content wide left">
-            <div id="feedback">
+<div style="clear: both;"></div>
+<div id="mainContainer" class="left noindex">
+<div class="content wide left">
+<div id="feedback">
 
 
-            </div>
+</div>
 
-            <div class="tjenestekalenderMenu">
+<div class="tjenestekalenderMenu">
     <span class="group">
 
         <a href="/no/Tjenestekalender/" class="">STARTSIDE</a>
@@ -155,77 +89,80 @@
 
 <a href="/no/Tjenestekalender/Ny-tjenesteeier/" class="">TJENESTEEIERE</a><a href="/no/Tjenestekalender/Helligdager/"
                                                                              class="">HELLIGDAGER</a>    </span>
-            </div>
+</div>
 
-            <div class="tjenestekalender">
+<div class="tjenestekalender">
 
-                <div class="lazy lazy-horizontal">
-                    <div class="control-panel" data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Company","actions":[{"type":"freeTextFilter","propertyName":"company"},{"type":"alphabeticalAscendingSort","propertyName":"company"},{"type":"alphabeticalDescendingSort","propertyName":"company"}]},{"name":"Owner","actions":[{"type":"fixedFilter","propertyName":"owner","propertyValue":"Creuna","displayName":"Owner is Creuna"},{"type":"fixedFilter","propertyName":"owner","propertyValue":"Breaking Wind","displayName":"Owner is Breaking Wind"}]},{"name":"Active","actions":[{"type":"fixedFilter","propertyName":"active","propertyValue":true,"displayName":"Active"},{"type":"fixedFilter","propertyName":"active","propertyValue":false,"displayName":"Inactive"}]}] }'>
-                        <ul class="panels" data-bind="foreach: panels">
-                            <li class="panel">
-                                <h3 class="panel-title" data-bind="text: name"></h3>
-                                <ul class="panel-actions" data-bind="foreach: actions">
-                                    <li class="panel-action" data-bind="template: { name: type + '_tmpl' }"></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div data-lazy-list-horizontal='{"endpoint": "15.json", "pageSize": 31, "filterTopic": "LLFT", "comparatorTopic": "LLCT"}'>
-                        <div class="lazy-wrapper">
-                            <table class="lazy-table">
-                                <thead>
-                                <tr>
-                                    <th>Company</th>
-                                    <!-- ko foreach: $root.visibleGroups -->
-                                    <th data-bind="text: title, attr: { colspan: columns }"></th>
-                                    <!-- /ko -->
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <!-- ko foreach: $root.visibleHeaders -->
-                                    <th data-bind="text: day, attr: { title: info }, css: (special ? 'special' : '')"></th>
-                                    <!-- /ko -->
-                                </tr>
-                                </thead>
-                                <tbody data-bind="foreach: processed, scroll: onWheel">
-                                <tr>
-                                    <th data-bind="text: company"></th>
-                                    <!-- ko foreach: $root.visibleData()[$index()] -->
-                                    <td data-bind="text: $data.text"></td>
-                                    <!-- /ko -->
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div class="track track-horizontal">
-                                <div class="track-inner">
-                                    <div class="track-scrubber" data-bind="lazyScrubberHorizontal: { percentage: percentage, on: on(), max: max() }">
-                                        <span class="text">Scrubber</span>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="lazy">
+        <div class="control-panel" data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"Company","actions":[{"type":"freeTextFilter","propertyName":"company"},{"type":"alphabeticalAscendingSort","propertyName":"company"},{"type":"alphabeticalDescendingSort","propertyName":"company"}]},{"name":"Owner","actions":[{"type":"fixedFilter","propertyName":"owner","propertyValue":"Creuna","displayName":"Owner is Creuna"},{"type":"fixedFilter","propertyName":"owner","propertyValue":"Breaking Wind","displayName":"Owner is Breaking Wind"}]},{"name":"Active","actions":[{"type":"fixedFilter","propertyName":"active","propertyValue":true,"displayName":"Active"},{"type":"fixedFilter","propertyName":"active","propertyValue":false,"displayName":"Inactive"}]}] }'>
+            <ul class="panels" data-bind="foreach: panels">
+                <li class="panel">
+                    <h3 class="panel-title" data-bind="text: name"></h3>
+                    <ul class="panel-actions" data-bind="foreach: actions">
+                        <li class="panel-action" data-bind="template: { name: type + '_tmpl' }"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div data-lazy-list-horizontal='{"endpoint": "15.json", "pageSize": 31, "filterTopic": "LLFT", "comparatorTopic": "LLCT"}'>
+            <div class="lazy-wrapper">
+                <table class="lazy lazy-horizontal">
+                    <thead>
+                    <tr>
+                        <th rowspan="2">Name</th>
+                        <th rowspan="2">Owner</th>
+                        <th rowspan="2">Active</th>
+                        <!-- ko foreach: $root.visibleGroups -->
+                        <th data-bind="text: title, attr: { colspan: columns }"></th>
+                        <!-- /ko -->
+                    </tr>
+                    <tr>
+                        <!-- ko foreach: $root.visibleHeaders -->
+                        <th data-bind="text: day, attr: { title: info }"></th>
+                        <!-- /ko -->
+                    </tr>
+                    </thead>
+                    <tbody data-bind="foreach: processed, scroll: onWheel">
+                    <tr>
+                        <td data-bind="text: company"></td>
+                        <td data-bind="text: owner"></td>
+                        <td data-bind="text: active"></td>
+                        <!-- ko foreach: $root.visibleData()[$index()] -->
+                        <td data-bind="text: $data.text"></td>
+                        <!-- /ko -->
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="track track-horizontal">
+                    <div class="track-inner">
+                        <div class="track-scrubber" data-bind="lazyScrubberHorizontal: { percentage: percentage, on: on(), max: max() }">
+                            <span class="text">Scrubber</span>
                         </div>
                     </div>
                 </div>
-                <script id="freeTextFilter_tmpl" type="text/html">
-                    <input class="panel-input" type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'" />
-                </script>
-                <script id="alphabeticalAscendingSort_tmpl" type="text/html">
-                    <button class="panel-button" type="button" data-bind="click: $root.comparatorHandler">Ascending</button>
-                </script>
-                <script id="alphabeticalDescendingSort_tmpl" type="text/html">
-                    <button class="panel-button" type="button" data-bind="click: $root.comparatorHandler">Descending</button>
-                </script>
-                <script id="fixedFilter_tmpl" type="text/html">
-                    <label class="panel-label">
-                        <input class="panel-checkbox" type="checkbox" data-bind="checked: active" />
-                        <span class="panel-label-text" data-bind="text: displayName"></span>
-                    </label>
-                </script>
-
             </div>
         </div>
     </div>
-    <div style="clear: both;"></div>
+    <script id="freeTextFilter_tmpl" type="text/html">
+        <input class="panel-input" type="text" data-bind="value: filter, valueUpdate: 'keyup'" />
+    </script>
+    <script id="alphabeticalAscendingSort_tmpl" type="text/html">
+        <button class="panel-button" type="button" data-bind="click: $root.comparatorHandler">Ascending</button>
+    </script>
+    <script id="alphabeticalDescendingSort_tmpl" type="text/html">
+        <button class="panel-button" type="button" data-bind="click: $root.comparatorHandler">Descending</button>
+    </script>
+    <script id="fixedFilter_tmpl" type="text/html">
+        <label class="panel-label">
+            <input class="panel-checkbox" type="checkbox" data-bind="checked: active" />
+            <span class="panel-label-text" data-bind="text: displayName"></span>
+        </label>
+    </script>
+
+</div>
+</div>
+</div>
+<div style="clear: both;"></div>
 </div>
 
 <footer>
@@ -323,5 +260,3 @@
     </div>
     <!-- end footer -->
 </footer>
-</body>
-</html>

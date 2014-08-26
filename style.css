@@ -1,6 +1,6 @@
-*,
-*:before,
-*:after {
+.lazy *,
+.lazy *:before,
+.lazy *:after {
     box-sizing: border-box;
 }
 
@@ -12,25 +12,116 @@
     user-select:none;
 }
 
+.control-panel {
+    margin: 1em 0;
+}
+
+.panels,
+.panel-actions,
+.content .panels,
+.content .panel-actions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.panels:before,
+.panels:after {
+    content: ' ';
+    display: table;
+}
+
+.panels:after {
+    clear: both;
+}
+
+.panel {
+    float: left;
+    padding: 5px;
+    width: 155px;
+}
+
+.panels-slim .panel {
+    width: 117px;
+}
+
+.panel-title {
+    border-bottom: 1px solid #dadada;
+    font-size: 1em;
+    margin: 0 0 .5em 0;
+}
+
+.panel-action {
+    margin-top: .5em;
+}
+
+.panel-action:first-child {
+    margin-top: 0;
+}
+
+.panel-input {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+.panel-button {
+    cursor: pointer;
+    width: 100%;
+}
+
+.panel-label {
+    cursor: pointer;
+    display: block;
+    padding-left: 1.5em;
+    position: relative;
+}
+
+.panel-label-text {
+
+}
+
+.panel-checkbox {
+    left: 0;
+    position: absolute;
+}
+
 .lazy-wrapper {
     position: relative;
 }
 
-.lazy {
+.lazy .lazy-wrapper {
     padding-right: 16px;
-    table-layout: fixed;
-    width: 100%;
 }
 
-.lazy-horizontal {
+.lazy-horizontal .lazy-wrapper {
     min-width: 100%;
     padding-bottom: 16px;
     padding-right: 0;
     width: auto;
 }
 
-.lazy th {
+.lazy-table,
+.content .lazy-table {
+    margin: 0;
+    width: 100%;
+}
+
+.lazy-vertical .lazy-table,
+.content .lazy-vertical .lazy-table {
+    table-layout: fixed;
+}
+
+.lazy thead th {
     text-align: left;
+}
+
+.content .lazy-table tbody th {
+    border: 0;
+}
+
+.lazy .special {
+    color: red;
 }
 
 .track {

@@ -1,0 +1,852 @@
+.tjenestekalenderMenu {
+    border-bottom: 1px solid #dadada;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+
+.tjenestekalenderMenu a {
+    padding-right: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.tjenestekalenderMenu .group {
+    margin-right: 50px;
+}
+
+.tjenestekalenderMenu #menuGroup3 {
+    margin-right: 0px;
+    float: right;
+}
+
+.tjenestekalenderMenu .selected {
+    padding: 3px 3px 3px 3px;
+    color: #fff;
+    background-color: #666;
+    font-weight: bold;
+}
+
+.tjenestekalenderMenu #menuGroup2 .selected {
+    margin-right: 5px;
+}
+
+.tjenestekalender {
+    margin-bottom: 20px;
+}
+
+.content.wide {
+    width: 940px;
+    padding: 0;
+    margin-left: 2px;
+}
+
+.tjenestekalender h1 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+    margin: 40px 0 20px 0 !important;
+    padding: 0 0 0 0;
+}
+
+.tjenestekalender h1 > .deleteButton {
+    float: right;
+}
+
+.tjenestekalender h1 > .deleteButton > input[type="button"] {
+    margin: 0px !important;
+}
+
+.tjenestekalender > h1:first-of-type,
+.tjenestekalender > .leftColumn > h1:first-of-type,
+.tjenestekalender > .rightColumn > h1:first-of-type {
+    margin: 0 0 20px 0 !important;
+}
+
+.tjenestekalender h2 {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 22px;
+    margin: 20px 0 20px 0 !important;
+}
+
+.tjenestekalender form h2 {
+    border-top-color: #dadada;
+    border-top-style: solid;
+    border-top-width: 2px;
+    font-weight: normal;
+    font-size: 12px;
+    padding-top: 5px;
+    line-height: normal;
+    margin: 20px 0 0 0 !important;
+    text-align: right;
+}
+
+.tjenestekalender form .header {
+    border-top-color: #dadada;
+    border-top-style: solid;
+    border-top-width: 2px;
+    margin: 20px 0 0 0 !important;
+    text-align: right;
+}
+
+.tjenestekalender form .header span {
+    font-weight: normal;
+    font-size: 12px;
+    margin-top: 5px;
+    line-height: normal;
+}
+
+.tjenestekalender form .header button {
+    margin-top: 5px;
+}
+
+.tjenestekalender .btnLink {
+    text-decoration: none;
+}
+
+.tjenestekalender .btnConfirm {
+    width: 100% !important;
+}
+
+.tjenestekalender .btnLink {
+    text-decoration: none;
+}
+
+.tjenestekalender input[type="checkbox"] + label, .tjenestekalender input[type="radio"] + label {
+    cursor: pointer;
+    display: inline;
+    margin: 0 10px 0 0;
+}
+
+.tjenestekalender input[type="radio"] {
+    cursor: pointer;
+    display: inline;
+}
+
+.tjenestekalender input[type=datetime].hasDatepicker {
+    width: 80px;
+}
+
+.tjenestekalender input[type=datetime] {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    height: 18px;
+    padding: 0 4px;
+    width: 288px;
+}
+
+.tjenestekalender #pakker input[type=text] {
+    width: 151px;
+}
+
+.tjenestekalender ul.checkboxGroup, .tjenestekalender ul.radioGroup {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.tjenestekalender select {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    height: 22px;
+    width: 300px;
+}
+
+.tjenestekalender textarea {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    height: 100px;
+    padding: 4px;
+    width: 290px;
+    font-size: 12px;
+}
+
+.tjenestekalender input[type="submit"], .tjenestekalender input[type="button"] {
+    background-image: url(img/login_btn.png);
+    background-position: 0 0;
+    border: medium none;
+    cursor: pointer;
+    display: block;
+    height: 24px;
+    margin: 20px 0 0 0 !important;
+    width: 118px;
+}
+
+.tjenestekalender .deleteButton {
+    display: inline-block;
+}
+
+.tjenestekalender input[type="submit"].no-margin, .tjenestekalender input[type="button"].no-margin {
+    margin: 0 !important;
+}
+
+.tjenestekalender input[type="submit"].inline, .tjenestekalender input[type="button"].inline {
+    margin: 0 0 0 5px !important;
+    display: inline;
+
+}
+
+.tjenestekalender input[type="submit"][disabled=disabled]:hover,
+.tjenestekalender input[type="button"][disabled=disabled]:hover {
+    background-position: 0 0;
+}
+
+.tjenestekalender input[type="submit"]:hover, .tjenestekalender input[type="button"]:hover {
+    background-position: 0 -28px;
+}
+
+#tjenesteOverviewRoot {
+    position: relative;
+}
+
+.successMessage,
+.warningMessage,
+.errorMessage {
+    display: block;
+    padding: 10px 10px 10px 50px;
+    border: 1px solid #55ae7f;
+    margin-bottom: 20px;
+    background-color: #d7eae0;
+    word-wrap: break-word;
+}
+
+.warningMessage {
+    border: 1px solid #cfb460;
+    background-color: #fbecaf;
+}
+
+.errorMessage {
+    border: 1px solid #ed959d;
+    background-color: #f2d7da;
+}
+
+.tjenestekalender .hintTextLi {
+}
+
+.tjenestekalender .bannerSection {
+    float: none;
+    margin: 10px 0 10px 0;
+    width: 100%;
+}
+
+.tjenestekalender .bannerSection .fullContainer {
+    float: none;
+    padding: 10px;
+}
+
+.tjenestekalender .bannerSection .fullContainer p {
+    margin: 0;
+}
+
+.tjenestekalender .bannerSection .divider.yellow {
+    margin: 0 0 10px 0;
+}
+
+.tjenestekalender img {
+    margin: 0 !important;
+}
+
+.tjenestekalender img.formHelpText {
+    vertical-align: middle;
+    width: 20px;
+}
+
+.tjenestekalender img.liHelpText {
+    vertical-align: middle;
+    width: 20px;
+}
+
+.tjenestekalender .clickable {
+    cursor: pointer;
+}
+
+.tjenestekalender .leftColumn {
+    width: 360px;
+    background: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #dadada;
+    border-right: none;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.tjenestekalender .rightColumn {
+    width: 495px;
+    padding: 20px;
+    border: 1px solid #dadada;
+    /*height: 400px;*/
+    /*float: left;*/
+    margin: 0 0 20px 400px;
+}
+
+.tjenestekalender .field-validation-error {
+    color: #ff0000;
+    font-size: 12px;
+    margin: 5px 0 0 0;
+    display: block;
+}
+
+.tjenestekalender .input-validation-error {
+    background-color: #ffeeee;
+    border: 1px solid #ff0000;
+}
+
+.tjenestekalender .validation-summary-errors {
+    color: #ff0000;
+}
+
+.tjenestekalender #header {
+    overflow: hidden;
+}
+
+.tjenestekalender .overviewRoot .newObject {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.tjenestekalender .tableContainer table {
+    width: 200px;
+}
+
+.tjenestekalender .tableContainer {
+    float: left;
+    position: relative;
+    z-index: 100;
+}
+
+.tjenestekalender .tableContainer table tbody tr {
+    height: 30px;
+}
+
+.tjenestekalender .tableContainer table tbody tr td,
+.tjenestekalender .rightColumnTable table tbody tr td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 20px;
+}
+
+.tjenestekalender .tableContainer.calendar {
+    float: none;
+    /*max-width: 690px;*/
+    min-width: 0;
+    overflow-x: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.tjenestekalender .overviewRoot .btnRepport {
+    float: right;
+    bottom: 0;
+    margin-right: 15px;
+    margin-top: 50px;
+}
+
+.tjenestekalender .tableContainerStats {
+    border: 1px solid #c0c0c0;
+    width: 60%;
+    float: left;
+}
+
+.tjenestekalender .tableContainerStats table tbody tr td {
+    font-weight: bold;
+}
+
+.fixedHeader {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    visibility: hidden;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.headerDay.fixedHeader {
+    top: 61px;
+    left: 0px;
+    z-index: 100;
+}
+
+.tjenestekalender .tableContainer.calendar table td {
+    width: 60px;
+}
+
+.tjenestekalender .overviewRoot {
+    position: relative;
+}
+
+.tjenestekalender .overviewRoot table {
+    /*margin: 20px 0 0 0;*/
+
+    /*position: absolute;
+        left: 0;
+        top: 0; */
+}
+
+.tjenestekalender input[type="button"].inlineButton {
+    margin: 0 5px !important;
+    float: left;
+
+}
+
+.tjenestekalender .overviewRoot thead {
+    border-bottom: 1px solid #efefef;
+}
+
+.tjenestekalender .overviewRoot tr td {
+    border-bottom: 1px solid #dadada;
+}
+
+.tjenestekalender .overviewRoot tr td:first-child {
+    border-left: 1px solid #dadada;
+}
+
+.tjenestekalender .overviewRoot thead td {
+    vertical-align: bottom;
+    font-weight: bold;
+    height: 62px;
+}
+
+.tjenestekalender .overviewRoot thead td.topRow {
+    height: 25px;
+}
+
+.tjenestekalender .overviewRoot td {
+    max-width: 150px;
+    border-right: 1px solid #dadada;
+}
+
+.tjenestekalender .tableRoot td {
+    max-width: 300px;
+}
+
+.tjenestekalender .overviewRoot .fixedHeader td {
+    max-width: none;
+}
+
+.tjenestekalender thead td {
+    position: relative;
+}
+
+.tjenestekalender thead td .status {
+    width: 80px;
+}
+
+.tjenestekalender thead td .tableHeadCell {
+}
+
+.tjenestekalender thead td .tableHeadCell input[type="text"] {
+    padding: 0;
+    margin: 0 0 10px 0;
+    width: auto;
+    background: url(../../Tjenestekalender/UI/img/filter.png) no-repeat scroll;
+    background-position: right;
+
+}
+
+.tjenestekalender thead td .tableHeadCell .sorter {
+    cursor: pointer;
+
+}
+
+.tjenestekalender tfoot select {
+    width: 100%;
+}
+
+.tjenestekalender tfoot input[type="button"] {
+    margin: 0px !important;
+}
+
+.tjenestekalender .totalOverviewOverlay {
+    position: absolute;
+    background-color: #FFFFFF;
+    width: 200px;
+    z-index: 9999;
+    padding: 10px 5px;
+    min-height: 50px;
+    border: 1px solid;
+}
+
+.tjenestekalender .totalOverviewOverlay span.increasing,
+.tjenestekalender .totalOverviewOverlay span.decreasing {
+    background: url(../../Tjenestekalender/UI/img/stigende.png) no-repeat scroll;
+    padding: 2px 0 5px 25px;
+    display: block;
+    vertical-align: middle;
+}
+
+.tjenestekalender .totalOverviewOverlay span.decreasing {
+    background: url(../../Tjenestekalender/UI/img/synkende.png) no-repeat scroll;
+}
+
+.tjenestekalender .totalOverviewOverlay input[type="text"] {
+    width: auto;
+}
+
+.tjenestekalender #addKnytning table {
+    margin: 0px;
+}
+
+.tjenestekalender #addKnytning thead td {
+    font-weight: bold;
+}
+
+.tjenestekalender #addKnytning input[type="button"] {
+    display: inline-block;
+}
+
+.tjenestekalender #addKnytning span a {
+    margin: 0px 5px 0px 0px;
+}
+
+.checkboxGroup tr, .radioGroup tr {
+    background: none !important;
+}
+
+.checkboxGroup label, .radioGroup label {
+    display: inline;
+}
+
+.tjenestekalender ul.tabbed {
+    display: block;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #dadada;
+}
+
+.tjenestekalender ul.tabbed li {
+    position: relative;
+    border-radius: 5px 5px 0 0;
+    float: left;
+    list-style: none;
+    border: 1px solid #bababa;
+    background: #dad33f;
+    line-height: 34px;
+    padding: 0 10px 0 10px;
+
+    /*Gradient*/
+    background: rgb(202, 191, 20); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2NhYmYxNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkZGQ0M2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, rgba(202, 191, 20, 1) 0%, rgba(221, 212, 59, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(202, 191, 20, 1)), color-stop(100%, rgba(221, 212, 59, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(202, 191, 20, 1) 0%, rgba(221, 212, 59, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(202, 191, 20, 1) 0%, rgba(221, 212, 59, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(202, 191, 20, 1) 0%, rgba(221, 212, 59, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(202, 191, 20, 1) 0%, rgba(221, 212, 59, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cabf14', endColorstr='#ddd43b', GradientType=0); /* IE6-8 */
+}
+
+.tjenestekalender ul.tabbed li.current {
+    background: #f0edb2;
+}
+
+.cf::after {
+    visibility: hidden;
+    clear: both;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.tjenestekalender .objectFilter {
+    margin-bottom: 25px;
+}
+
+#ui-datepicker-div {
+    font-size: 0.7em !important;
+}
+
+.tjenestekalender .popup {
+    z-index: 100;
+
+    margin-top: -40px;
+    border: 1px solid;
+    background-color: #FFFFFF;
+    padding: 20px;
+    width: 117px;
+    position: absolute;
+}
+
+#serviceCodeSection, #editionCodeSection {
+    display: none;
+}
+
+.tjenestekalender .optionalFields {
+    display: none;
+}
+
+.tjenestekalender #fristRows label.radio {
+    margin: 0;
+    padding: 0;
+}
+
+.tjenestekalender #fristSection #fristRows {
+    margin-bottom: 10px;
+}
+
+.tjenestekalender #fristSection a {
+    font-size: 12px;
+}
+
+.tjenestekalender .utviklingsplan thead,
+.tjenestekalender .bestilling thead,
+.tjenestekalender .prosjekt thead {
+    background: #EFEFEF;
+}
+
+.tjenestekalender .utviklingsplan tfoot,
+.tjenestekalender .bestilling tfoot,
+.tjenestekalender .prosjekt tfoot {
+    background: #EFEFEF;
+}
+
+.tjenestekalender #activeUtviklingsplanLnk, .tjenestekalender #oldUtviklingsplanLnk {
+    float: right;
+    font-size: 0.8em;
+}
+
+.tjenestekalender .calendarHover {
+    position: fixed;
+    background-color: #FFFFCC;
+    padding: 5px 15px 5px 5px;
+    border: 1px solid;
+}
+
+.tjenestekalender .calendarRoot {
+    position: relative;
+}
+
+.tjenestekalender .calendarRoot table {
+    margin: 20px 0 0 0;
+
+    /*position: absolute;
+        left: 0;
+        top: 0; */
+}
+
+.tjenestekalender .calendarRoot thead {
+    border-bottom: 1px solid #efefef;
+}
+
+.tjenestekalender .calendarRoot tr td {
+    border-bottom: 1px solid #dadada;
+    cursor: pointer;
+}
+
+.tjenestekalender .calendarRoot tr td:first-child {
+    border-left: 1px solid #dadada;
+}
+
+.tjenestekalender .calendarRoot thead td {
+    vertical-align: bottom;
+    font-weight: bold;
+    height: 20px;
+    cursor: pointer;
+}
+
+.tjenestekalender .tableContainer.calendar thead td.weekend {
+    color: #ff0000;
+}
+
+.tjenestekalender .tableContainer.calendar thead td.altinnDay {
+    color: blueviolet;
+}
+
+.tjenestekalender .calendarRoot td {
+    /*padding-left: 20px;*/
+    width: 150px;
+    border-right: 1px solid #dadada;
+    /*vertical-align: bottom;*/
+}
+
+.tjenestekalender .calendarRoot thead td {
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+}
+
+.tjenestekalender .calendarRoot thead td.status {
+    width: 80px;
+}
+
+.tjenestekalender .calendarRoot thead td .tableHeadCell {
+}
+
+.tjenestekalender .calendarRoot thead td .tableHeadCell input[type="text"] {
+    padding: 0;
+    margin: 0 0 10px 0;
+    width: auto;
+    background: url(../../Tjenestekalender/UI/img/filter.png) no-repeat scroll;
+    background-position: right;
+
+}
+
+.tjenestekalender .calendarRoot thead td .tableHeadCell .sorter {
+    cursor: pointer;
+
+}
+
+.tjenestekalender .calendarRoot tfoot select {
+    width: 100%;
+}
+
+.tjenestekalender .calendarRoot tfoot input[type="button"] {
+    margin: 0px !important;
+}
+
+.tjenestekalender .popupRoot {
+    border: 1px solid;
+    background-color: #FFFFFF;
+    position: absolute;
+    min-width: 322px;
+    margin-left: 50px;
+    margin-top: 50px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.tjenestekalender .popupRoot .closeButton {
+    float: right;
+    top: -60px;
+    position: relative;
+    width: 30px;
+
+}
+
+.tjenestekalender .popupRoot .choiceButton {
+    float: left;
+    margin-right: 10px !important;
+}
+
+.tjenestekalender .popupRoot ul li {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Oppdatering av standard produkter*/
+.tjenestekalender .calendarRoot .o {
+    background-color: #EFEFEF;
+}
+
+/* Synkronisering av tjenester fra TUL*/
+.tjenestekalender .calendarRoot .s {
+    background-color: #f2f2f2;
+}
+
+/* Infrastrukturendringer */
+.tjenestekalender .calendarRoot .i {
+    background-color: #f2f2f2;
+}
+
+/*Åpningsdag for sentrale tjenester */
+.tjenestekalender .calendarRoot .å {
+    background-color: #f2f2f2;
+}
+
+/* Frysperiode */
+.tjenestekalender .calendarRoot .p {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+/* Aktiviteter */
+.tjenestekalender .calendarRoot .a {
+    background-color: #f2f2f2;
+}
+
+/* Leveranser fra eksterne parter */
+.tjenestekalender .calendarRoot .l {
+    background-color: #f2f2f2;
+}
+
+/* Kursaktiviteter */
+.tjenestekalender .calendarRoot .k {
+    background-color: #f2f2f2;
+}
+
+/* Planlagt prosjektrelease */
+.tjenestekalender .calendarRoot .r {
+    background-color: cadetblue;
+}
+
+/* Planlagt forvaltningsrelease */
+.tjenestekalender .calendarRoot .v {
+    background-color: #f2f2f2;
+}
+
+/* Annet */
+.tjenestekalender .calendarRoot .n {
+    background-color: #f2f2f2;
+}
+
+.tjenestekalender .calendarRoot .multiple {
+    background-color: #ed959d;
+}
+
+.tjenestekalender ul#tabs {
+    margin: 0px 0px 20px 0px;
+    padding: 0;
+}
+
+.tjenestekalender ul#tabs li {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style: none;
+    margin: 0px 20px 0px 0px;
+}
+
+.tjenestekalender ul#tabs li a {
+    text-decoration: none;
+}
+
+.tjenestekalender #ajaxOverlay {
+    position: absolute;
+    background: #fff;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.tjenestekalender #ajaxOverlay img {
+    position: relative;
+    left: 50%;
+    top: 5em;
+}
+
+.tjenestekalender #prognoserMain table tbody tr td.fristerSelected {
+    background-color: #f0edb2;
+}
+
+.tjenestekalender #prognoserMain table tbody tr td.deadline {
+    background-color: #f0edb2;
+}
+
+.tjenestekalender ul.fristList {
+
+    list-style: none;
+}
+
+.tjenestekalender ul.fristList li {
+    float: left;
+}
+
+.tjenestekalender ul.fristList li img {
+    vertical-align: middle;
+}
+
+.tjenestekalender button.right {
+    margin-left: 5px;
+}
+
+.tjenesterkalenderStats h2 {
+    margin: 2px 0 2px 0;
+}
+
+select.yearSelect {
+    width: 80px;
+}

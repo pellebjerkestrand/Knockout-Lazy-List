@@ -1,0 +1,1240 @@
+/*------- LEFT MENU ------*/
+
+#leftMenu{
+    width: 180px;
+    margin: 23px 0 0 0;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+ul.leftmenu
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+}
+ul.leftmenu ul
+{
+    margin: 0;
+    background-image: none;
+}
+
+ul.leftmenu li
+{
+    border-top: 1px solid #dfe9f2;
+    list-style: none;
+}
+ul.leftmenu li span
+{
+    display: block;
+}
+ul.leftmenu li span:hover,
+ul.leftmenu li span.selected
+{
+    background-color: #ece99f;
+}
+
+ul.leftmenu li li
+{
+    background-image: none;
+}
+
+ul.leftmenu li span
+{
+}
+
+ul.leftmenu li a
+{
+    padding: 5px 0 5px 0;
+    margin-left: 15px;
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+}
+
+ul.leftmenu li.parent a
+{
+    margin-left: 15px;
+}
+ul.leftmenu li a.selected
+{
+    font-weight: bold;
+}
+ul.leftmenu li li span
+{
+    padding-left: 20px;
+}
+ul.leftmenu li li span span
+{
+    padding-left: 0;
+}
+ul.leftmenu li li li span
+{
+    padding-left: 40px;
+}
+ul.leftmenu li li li span span
+{
+    padding-left: 0;
+}
+ul.leftmenu li.parent li.parent a
+{
+    padding: 5px 0 5px 0;
+}
+ul.leftmenu li li li span
+{
+}
+ul.leftmenu li.parent > span span
+{
+    background: url('img/menu_arrow_right.png') no-repeat scroll 0 50% transparent;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin-top: 8px;
+    vertical-align: top;
+    position: absolute;
+    float: left;
+}
+ul.leftmenu li.parent.expanded > span span
+{
+    background: url('img/menu_arrow_down.png') no-repeat scroll 0 50% transparent;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin-top: 8px;
+    vertical-align: top;
+}
+ul.leftmenu li.parent.current.expanded > span span
+{
+    background: url('img/menu_arrow_down.png') no-repeat scroll 0 50% transparent;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin-top: 8px;
+    vertical-align: top;
+}
+
+/*--------- CONTENT ----------*/
+
+.content{
+    width: 520px;
+    margin: 20px 0 0 15px;
+}
+
+.content h1{
+    margin: 0 0 20px 0;
+}
+
+.content p{
+    margin-bottom: 20px;
+}
+
+.content img{
+    margin: 20px 0;
+}
+
+.content .ingress p{
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0 0 20px 0;
+}
+
+.content ul{
+    padding-left: 15px;
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+.content ol{
+    padding-left: 20px;
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+.content table{
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+.content table th{
+    text-align: left;
+    border-bottom: solid 1px #000;
+    padding: 5px 5px;
+}
+
+.content table td{
+    text-align: left;
+    padding: 5px 5px;
+}
+.content table tbody tr:nth-child(2n){
+    background: #EFEFEF;
+}
+
+.content750px{
+    width: 750px;
+    margin: 0 0 0 0;
+}
+
+.articleText{
+    margin-top: 20px;
+}
+
+.dateLine{
+    float: left;
+    border-top:1px solid #000;
+    background-color: transparent;
+    padding: 5px 0;
+    width: 100%;
+}
+
+/*-------- MAIN MENU STYLING -------*/
+
+#mainMenu .menuItem a.selected{
+    background-image: url("img/main_menu_btn_bg.png");
+    background-repeat:repeat-x;
+    font-weight: bold;
+}
+
+/*-------- TOP MENU STYLING -------*/
+
+#menuTop .menuItem a.selected{
+    background-image: url("img/top_menu_btn_bg.png");
+    background-repeat: repeat-x;
+    font-weight: bold;
+    color: #000;
+}
+
+
+
+/*------- RIGHT SIDEBAR ------*/
+
+
+.processTre #rightSidebar .relevantLinks .contentRightSidebar ul{
+    padding-left: 25px;
+}
+
+
+.processTre #rightSidebar .relevantLinks .contentRightSidebar ul li{
+    list-style: disc;
+    font-size: 12px;
+}
+
+
+#rightSidebar .relevantLinks ol{
+    padding-left: 30px;
+}
+
+
+#rightSidebar .relevantLinks ol li{
+    list-style: decimal;
+    font-size: 12px;
+}
+
+.contentRightSidebar {
+    clear: both;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.contentRightSidebar p{
+    margin-bottom: 20px;
+}
+
+.processTre #rightSidebar .contentRightSidebar p {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.contentRightSidebar ul li{
+    list-style: none;
+}
+.headingRightSidebar{
+    background-image: url("img/heading_right_bg.jpg");
+    width: 210px;
+    height: 47px;
+}
+
+.headingRightSidebar h3{
+    padding: 20px 5px 0 10px;
+}
+
+#rightSidebar a{
+    line-height: 16px;
+    text-decoration: none;
+    color: #1b406c;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#rightSidebar a:hover{
+    color: #0092d7;
+}
+
+#rightSidebar p{
+    font-size: 11px;
+}
+
+#rightSidebar .relevantLinks a{
+    font-weight: normal;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+.publisher{
+    display:block;
+    font-size: 11px;
+}
+
+.relevantLinks .linkList{
+    background-image: url("img/link_liste_arrow.png");
+    background-repeat: no-repeat;
+    background-position: 0 70%;
+}
+
+#rightSidebar .newsRight a{
+    margin: 0;
+    padding: 0;
+}
+
+#rightSidebar .date{
+    color: #636363;
+    display: block;
+    font-size: 11px;
+    line-height: 1;
+}
+
+#rightSidebar .newsRight p{
+    font-size: 12px;
+}
+
+#rightSidebar .newsImg img{
+    width: 200px;
+    margin: 0 0 10px 0;
+}
+
+#rightSidebar .moreNewsLink a{
+    float: right;
+    font-weight: normal;
+    margin-top: 20px;
+}
+
+
+/*-------- PROSESS LISTE--------*/
+
+.processTre {
+    font-size: 12px;
+    overflow: hidden;
+    width: 770px;
+}
+
+.processTre ul{
+    margin-bottom: 0;
+}
+
+.processTre li a {
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.processTre li a.proscessArrowFirstLevel,
+.processTre li a.proscessArrowSecondLevel,
+.processTre li a.proscessArrowThirdLevel{
+    background-image: url("img/prosess_piler.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    height: 55px;
+    position: relative;
+    width: 159px;
+}
+
+.processTre li a.proscessArrowSecondLevel{
+    background-position: 0 -62px;
+}
+
+.processTre ul. li a.proscessArrowSecondLevel.selected{
+    background-image: url("img/img/prosess_pil.png");
+    background-position: 0 0;
+}
+
+.processTre li a.proscessArrowThirdLevel{
+    background-position: 0 -123px;
+}
+
+.processTre li a.selected {
+    background-image: url("img/prosess_pil.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: block;
+    height: 55px;
+    width: 159px;
+    color: #252525;
+    font-weight: normal;
+}
+
+.headingProcessTre{
+    font-size: 18px;
+    line-height: 22px;
+    margin:0 0 10px 10px;
+}
+
+.processTre li a.proscessArrow,
+.processTre ul.description li a{
+    color:#252525;
+    text-align: center;
+    text-decoration: none;
+}
+
+.processTre li a.proscessArrow {
+    background-image: url("img/prosess_pil.png");
+    background-position: 0 -67px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 55px;
+    width: 158px;
+    float:left;
+    position: relative;
+}
+
+/*
+.processTre li:last-child a.proscessArrow {
+    background-image: url("img/prosess_pil_end.png");
+    background-position: 0 -67px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 55px;
+    width: 158px;
+    float:left;
+    position: relative;
+}
+*/
+
+.processTre li a.proscessArrow.selected{
+    background-image: url("img/prosess_pil.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: block;
+    height: 55px;
+    width: 158px;
+}
+
+/*
+.processTre li:last-child a.proscessArrow.selected{
+    background-image: url("img/prosess_pil_end.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: block;
+    height: 55px;
+    width: 158px;
+}
+*/
+
+.processTre li a span.textBox,
+.processTre li span.currentTextBox
+{
+    display:inline-block;
+    font-size: 12px;
+    height: 36px;
+    left: 19px;
+    overflow: hidden;
+    position: absolute;
+    text-align: left;
+    text-decoration: none;
+    top: 7px;
+    width: 122px;
+    vertical-align: bottom;
+}
+
+
+.processTre li a span.currentTextBox{
+    font-weight: bold;
+}
+
+.processTre li a span.proscessArrow p{
+    font-size: 12px;
+    height: 35px;
+    overflow: hidden;
+    padding: 10px 0 0 20px;
+    width: 115px;
+    margin-bottom: 10px;
+}
+
+
+.processTre h4
+{
+    display: block;
+    float: left;
+    clear: both;
+    color: #898989;
+    font-size: 10px;
+}
+
+.processTre ul.prosessList {
+    clear: left;
+    padding: 0 10px 10px 10px;
+    width: 100%;
+}
+
+.processTre ul.prosessList.level3{
+    margin-top: 1px;
+}
+
+.processTre ul.prosessList li span.lineTop{
+    display: none;
+    border-left: solid 1px #ddd;
+    width: 1px;
+    height: 13px;
+    top: -13px;
+    left: 50%;
+    position: absolute;
+    display: block;
+}
+
+.processTre ul.prosessList li span.relationArrowBottom,
+.processTre ul.prosessList li span.relationArrowTop{
+    background: url('img/arrow_down.png') no-repeat 50% 100%;
+    width: 8px;
+    position: absolute;
+    bottom: -12px;
+    height: 14px;
+    left: 50%;
+    margin-left: -4px;
+    display: none;
+    z-index: 1000;
+}
+
+.processTre ul.prosessList li span.relationArrowTop{
+    display: none;
+}
+
+.processTre ul.prosessList li span.relationArrowTop{
+    top: -13px;
+}
+.processTre ul.prosessList li{
+    display: inline-block;
+    list-style-type: none;
+    position:relative;
+    float: left;
+}
+
+.processTre ul.description{
+    background-color: #f0edb2;
+    padding: 10px 0;
+    width: 515px;
+    margin:0;
+}
+
+.processTre ul.description li{
+    display: block;
+    list-style-type: none;
+    float: left;
+}
+
+.processTre li span.expandBtn{
+    background-image: url("img/process_btn.png");
+    background-position: 0 0;
+    bottom: -10px;
+    height: 23px;
+    left: 11px;
+    position: absolute;
+    width: 25px;
+}
+
+.processTre li span.expandBtn.selected{
+    background-position: -27px 23px;
+}
+
+.processTre ul.description li a,
+.processTre ul.description li div.selected {
+    margin-left: -10px;
+    padding: 10px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.processTre ul.description li a:hover,
+.processTre ul.description li div.selected {
+    background-color: #dad33f;
+}
+
+.processTre ul.description li div.selected
+{
+    display: inline;
+    font-weight: bold;
+}
+
+.processTre ul.description li a,
+.processTre ul.description li div.selected {
+    padding-right: 20px;
+}
+
+.processTre ul.description li a span.divider,
+.processTre ul.description li div.selected span.divider {
+    background-color: #dad33f;
+    display: block;
+    height: 24px;
+    margin: 0;
+    position: absolute;
+    right: 4px;
+    top: 6px;
+    width: 1px;
+}
+
+.processTre ul.description li:last-child a span.divider {
+    background: none;
+}
+
+.processTre .contentBox{
+    float: left;
+    margin-bottom: 30px;
+    width: 520px;
+    background: #FFF;
+}
+
+/*.processTre .content{
+    margin: 0 0 35px;
+}*/
+
+.processTre .content {
+    margin: 0 10px;
+}
+
+.processTre ul.level2 li{
+    display: inline-block;
+    list-style-type: none;
+    margin-top:20px;
+}
+
+.processTre ul.level2 li.first{
+    display: inline-block;
+    list-style-type: none;
+    margin-top:20px;
+}
+
+.processTre ul.level2{
+    display: none;
+}
+
+.processTre ul.level3{
+    display: none;
+}
+
+.processTre ul.level2 li {
+    display: inline-block;
+    list-style-type: none;
+    margin-top: 2px;
+}
+.processTre ul.level2 li.first {
+    display: inline-block;
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+.prosessList li a:hover {
+    text-decoration:underline;
+}
+
+.processArrowRelationFirst,
+.processArrowRelationSecond{
+    border-top: 2px solid #555454;
+    float: left;
+    height: 2px;
+    width: 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.processStepsTwo,
+.processStepsThree,
+.processStepsFour{
+    background: url('img/process_steps_4.png') no-repeat 0 0;
+    height: 16px;
+    float: left;
+    margin: -4px 0 0 90px;
+}
+
+.processStepsThree{
+    background: url('img/process_steps_3.png') no-repeat 0 0;
+}
+
+.processStepsTwo{
+    background: url('img/process_steps_2.png') no-repeat 0 0;
+}
+
+.prosessList li li{
+    list-style:none;
+    display:list-item;
+}
+
+.prosessList ul .subLevel ul{
+    margin-top:20px;
+}
+
+.processDescription ul{
+    margin:0px;
+    padding:0px;
+}
+
+.processDescription ul li{
+    display:inline;
+    height:30px;
+    float: left;
+}
+
+.processTre #rightSidebar{
+    margin: 32px 0 0 40px;
+}
+.processTre #rightSidebar .contentRightSidebar p{
+    margin-top: 10px;
+}
+
+.processTre #rightSidebar .contentRightSidebar ul{
+    list-style: none;
+    background-color: #fff;
+    margin: 0;
+}
+
+.processTre .contentBox ul{
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.processTre .contentBox ul li,{
+    font-size: 12px;
+}
+
+.processTre .contentBox ul.description
+{
+    padding-left: 0;
+}
+
+#wrapper .processTre .contentBox .content ol{
+    padding-left: 30px;
+}
+
+
+#wrapper .processTre .contentBox .content ol li{
+    list-style: decimal;
+    font-size: 12px;
+}
+
+.processTre ul.prosessList li a span.relationArrowBottom,
+.processTre ul.prosessList li a span.relationArrowTop{
+    left: 79px;
+}
+
+.processGridFirst,
+.processGridSecond{
+    position: relative;
+    float: left;
+    margin-left: 90px;
+}
+
+.processGridFirst .topline,
+.processGridSecond .topline{
+    position: absolute;
+    width: 100%;
+    border-top: 1px #ddd solid;
+    z-index: 10;
+}
+
+.tabContent {
+    clear: both;
+    margin: 0;
+    padding-top: 0;
+    width: 480px;
+}
+
+
+.processTre ul.description li a.tab.selected {
+    background-color: #dad33f;
+    background-image: none;
+    color: #000000;
+    display: inline;
+    height: auto;
+    width: 100%;
+
+}
+
+.processTre ul.description li a.tab {
+    margin: -10px 0 -10px -5px;
+    padding: 10px 25px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: url('img/divider_tabs.jpg') no-repeat 100% 50%;
+}
+
+.processTre ul.description li a:hover.tab{
+    background-color: #DAD33F;
+}
+
+/* LIST PAGE */
+
+div.paging a {
+    line-height: 16px;
+    text-decoration: none;
+    color: #1B406C;
+    font-size: 12px;
+}
+
+div.paging a.SelectedPagingItem {
+    font-weight: bold;
+}
+
+ul.alphabetindex {
+    padding: 0;
+    list-style: none;
+}
+
+ul.alphabetindex li {
+    display: inline;
+    padding: 0;
+    margin-right: 6px;
+    font-size: 16px;
+}
+
+ul.alphabetindex li a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: black;
+}
+
+ul.alphabetlist {
+    margin: 0 0 10px 0;
+    padding: 10px 0;
+}
+
+ul.alphabetlist li ul {
+    padding: 10px 0 0 0;
+    margin: 0;
+}
+
+ul.alphabetlist li {
+    margin: 0 0 10px 0;
+}
+
+ul.alphabetlist li ul li a:hover {
+    color: #0092D7;
+}
+
+ul.alphabetlist li ul li a {
+    display: inline-block;
+    line-height: 14px;
+    text-decoration: none;
+    color: #1B406C;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+ul.alphabetlist li ul.moreLinks {
+    padding: 0;
+    margin: 0;
+}
+
+ul.alphabetlist li ul.moreLinks li a {
+    color: #898989;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+ul.alphabetlist li ul.moreLinks li a:before {
+    content: "> ";
+}
+
+ul.alphabetlist li {
+    list-style: none;
+    padding: 0;
+}
+
+ul.alphabetlist li hr {
+    color: #ddd;
+    background-color: #ddd;
+    height: 1px;
+    clear: both;
+}
+
+ul.alphabetlist li h2 a {
+    color: black;
+    font-size: 18px;
+}
+
+/* SEARCH */
+
+div.searchLeftSidebar
+{
+    width: 180px;
+    margin: 48px 0 0 0;
+    font-size: 12px;
+}
+div.searchLeftSidebar div.facets div.container
+{
+    padding: 0 0 0 10px;
+}
+div.searchLeftSidebar div.facets span.title
+{
+    background-color: #B8CCDE;
+    padding: 7px 10px 5px 10px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+div.searchLeftSidebar ul
+{
+    margin-bottom: 35px;
+}
+div.searchLeftSidebar h3
+{
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #D7E3EF;
+    padding: 0 0 6px 0;
+    margin-bottom: 5px;
+}
+div.searchLeftSidebar a
+{
+    margin-top: 10px;
+}
+div.searchLeftSidebar ul li
+{
+    list-style-type: none;
+    margin-top: 10px;
+}
+div.searchLeftSidebar ul li a
+{
+    text-decoration: none;
+}
+div.searchContent
+{
+    width: 550px;
+    margin: 20px 0 0 15px;
+}
+
+div.searchForm dl dt
+{
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: normal;
+}
+
+div.searchForm input.searchField
+{
+    font-size: 14px;
+    height: 20px;
+    margin-bottom: 15px;
+    padding: 5px 0 0 5px;
+    width: 400px;
+}
+
+div.searchForm input.searchButton
+{
+    background: url("/Web/Styles/img/search_btn_big.png") no-repeat scroll 0 0 transparent;
+    font-size: 14px;
+    height: 30px;
+    width: 65px;
+    margin-right: 6px;
+    border: medium none;
+    padding: 0;
+    cursor: pointer;
+}
+div.searchForm input.searchButton:hover
+{
+    background-position: 0 -30px;
+}
+.advancedSearchLink a
+{
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+div.searchResults
+{
+    margin-bottom: 25px;
+    font-size: 12px;
+}
+div.searchResults ul li
+{
+    list-style-type: none;
+}
+div.searchResults ul li span.date
+{
+    font-weight: bold;
+    color: #898989;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+div.searchResults ul li span.publisher,
+div.searchResults ul li span.contentType
+{
+    font-size: 11px;
+    color: #636363;
+    display: inline;
+}
+div.searchResults ul li span.publisher
+{
+    text-transform: uppercase;
+}
+
+div.searchResults ul li a.title
+{
+    display:block;
+    font-weight: bold;
+    color: #174472;
+    text-transform: none;
+    font-size: 12px;
+    text-decoration: none;
+}
+div.searchResults ul li a.title:hover
+{
+    text-decoration: underline;
+}
+div.searchResults ul li span.url
+{
+    display: block;
+    margin: 10px 0 0;
+}
+div.searchResults ul li a.url
+{
+    font-size: 12px;
+    color: #197B30;
+}
+div.searchResults hr
+{
+    border: 1px solid #EFEFEF;
+    margin: 25px 0 15px 0;
+}
+div.resultPager
+{
+    font-size: 11px;
+}
+div.resultPager a.previousResult
+{
+    margin-right: 5px;
+}
+div.resultPager a.nextResult
+{
+    margin-left: 5px;
+}
+.searchAdvanced{
+    font-size: 12px;
+    height: 20px;
+    margin-bottom: 15px;
+    padding: 5px 0 0 5px;
+    width: 100%;
+    display: block;
+    float: left;
+}
+
+.searchAdvanced p,
+.searchAdvanced input,
+.searchAdvanced span{
+    float: left;
+}
+
+.searchAdvanced span{
+    width: 150px;
+    font-size: 12px;
+}
+
+.searchAdvanced input{
+    width: 350px;
+}
+
+.error
+{
+    color: Red;
+}
+.clear
+{
+    clear:both;
+}
+.selected
+{
+    font-weight: bold;
+}
+
+.processSection{
+    background-color: #ebf1f6;
+    float: left;
+    margin: 0 0 25px 0;
+    padding: 10px;
+    width: 500px;
+}
+
+.processSection h2{
+    font-weight:normal;
+}
+
+.processSection ul.processArrowSection {
+    font-size: 12px;
+    font-family: Arial;
+    text-decoration: none;
+    margin-top: 10px;
+    padding: 0px;
+}
+
+.processSection ul.processArrowSection li{
+    display: inline;
+    list-style-type: none;
+    float: left;
+}
+
+.processSection ul.processArrowSection li a{
+    background-image: url("img/process_arrow_section.png");
+    background-repeat: no-repeat;
+    display: block;
+    height: 50px;
+    width: 121px;
+    text-decoration: none;
+
+}
+
+.processSection ul.processArrowSection li a span {
+    float: left;
+    overflow: hidden;
+    padding: 15px 10px 10px 15px;
+    width: 85px;
+    height: 20px;
+    color: #000;
+}
+
+div.contact div.title
+{
+    font-size: 24px;
+    font-weight: normal;
+}
+
+div.contact table
+{
+    width:auto;
+    font-size: 12px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+div.contact table th
+{
+    text-align: left;
+    border-bottom: solid 1px #000;
+    padding: 5px 5px;
+}
+
+div.contact table td
+{
+    text-align: left;
+    padding: 5px 10px 5px 0px;
+}
+div.contact table td.label
+{
+    font-size: 11px;
+}
+
+div.contact table tbody tr:nth-child(2n){
+    background: #EFEFEF;
+}
+
+.content .wikiLink img
+{
+    margin: 0;
+}
+
+#rightSidebar a.wikiLink, .content a.wikiLink
+{
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.content .FileList img{
+    margin: 0 5px 0 0;
+}
+
+.content .FileList table{
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.content .FileList table td{
+    padding: 0;
+}
+
+/* Nyhetsside */
+.newsSection.wide{
+    width: 760px;
+    padding: 0;
+}
+
+.newsSection.wide ul{
+    list-style: none;
+}
+.newsSection.wide ul li {
+    margin-bottom: 10px;
+}
+
+.newsSection.wide a{
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.newsSection.wide img{
+    width: 125px;
+    float: left;
+    margin-right: 15px;
+}
+
+.newsSection.wide .text{
+    margin-left: 145px;
+}
+
+img.formHelpText{
+    vertical-align: middle;
+    width: 20px;
+}
+
+img.clickable {
+    cursor: pointer;
+}
+
+/* Xform styling */
+.xForm.formula{
+    border: 1px solid #1B406C;
+    padding: 5px;
+    background-color: #EFEFEF;
+}
+.xForm.formula #id_matrix label,
+.xForm.formula #id_matrix td{
+    display: block;
+}
+
+.xForm.formula #id_matrix .attachements input{
+    display: block;
+}
+
+.xForm.formula #id_matrix table tbody tr:nth-child(2n){
+    background: #fff;
+}
+
+.xForm.formula #id_matrix img.formHelpText{
+    margin: 0 0 10px 0;
+    vertical-align: top;
+    display: inline-block;
+    float: right;
+}
+
+.xForm.formula #id_matrix .bannerSection{
+    float: left;
+    padding: 10px;
+    width: 96%;
+    display: block;
+    margin-bottom: 10px;
+}

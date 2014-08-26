@@ -4,9 +4,14 @@
     <meta charset="utf-8" />
     <title>Knockout Lazy List</title>
     <script src="jquery-1.11.1.js"></script>
-    <script src="knockout-3.1.0.debug.js"></script>
+    <script src="knockout-3.2.0.js"></script>
     <script src="knockout-postbox.js"></script>
     <script src="knockout-lazy.list.js"></script>
+    <link rel="stylesheet" href="legacy/tjenestekalender.css" />
+    <link rel="stylesheet" href="legacy/reset.css" />
+    <link rel="stylesheet" href="legacy/structure.css" />
+    <link rel="stylesheet" href="legacy/frontpage.css" />
+    <link rel="stylesheet" href="legacy/style.css" />
     <link rel="stylesheet" href="style.css" />
     <script>
         /* NOTE: Example */
@@ -60,67 +65,322 @@
                         "displayName": "Brown"
                     }
                 ]
+            }, {
+                "name": "Email",
+                "actions": [
+                    {
+                        "type": "freeTextFilter",
+                        "propertyName": "email"
+                    },{
+                        "type": "alphabeticalAscendingSort",
+                        "propertyName": "email"
+                    },{
+                        "type": "alphabeticalDescendingSort",
+                        "propertyName": "email"
+                    }
+                ]
+            }, {
+                "name": "Favorite fruit",
+                "actions": [
+                    {
+                        "type": "freeTextFilter",
+                        "propertyName": "favoriteFruit"
+                    },{
+                        "type": "alphabeticalAscendingSort",
+                        "propertyName": "favoriteFruit"
+                    },{
+                        "type": "alphabeticalDescendingSort",
+                        "propertyName": "favoriteFruit"
+                    }
+                ]
+            }, {
+                "name": "GUID",
+                "actions": [
+                    {
+                        "type": "freeTextFilter",
+                        "propertyName": "guid"
+                    },{
+                        "type": "alphabeticalAscendingSort",
+                        "propertyName": "guid"
+                    },{
+                        "type": "alphabeticalDescendingSort",
+                        "propertyName": "guid"
+                    }
+                ]
+            }, {
+                "name": "Active",
+                "actions": [
+                    {
+                        "type": "fixedFilter",
+                        "propertyName": "isActive",
+                        "propertyValue": true,
+                        "displayName": "Active"
+                    },{
+                        "type": "fixedFilter",
+                        "propertyName": "isActive",
+                        "propertyValue": false,
+                        "displayName": "Inactive"
+                    }
+                ]
             }
         ];
     </script>
 </head>
 <body>
-<div data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"ID","actions":[{"type":"freeTextFilter","propertyName":"id"},{"type":"alphabeticalAscendingSort","propertyName":"id"},{"type":"alphabeticalDescendingSort","propertyName":"id"}]},{"name":"Gender","actions":[{"type":"fixedFilter","propertyName":"gender","propertyValue":"female","displayName":"Female"},{"type":"fixedFilter","propertyName":"gender","propertyValue":"male","displayName":"Male"}]},{"name":"Eye Color","actions":[{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"green","displayName":"Green"},{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"blue","displayName":"Blue"},{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"brown","displayName":"Brown"}]}] }'>
-    <ul data-bind="foreach: panels">
-        <li>
-            <h3 data-bind="text: name"></h3>
-            <ul data-bind="foreach: actions">
-                <li data-bind="template: { name: type + '_tmpl' }"></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-<div data-lazy-list-vertical='{ "endpoint": "1k.json", "pageSize": 15 }'>
-    <div>
-        Showing <span data-bind="text: visible().length"></span> of <span data-bind="text: processed().length"></span>, total: <span data-bind="text: data().length"></span>
-    </div>
-    <div class="lazy-wrapper">
-        <table class="lazy">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Eye Color</th>
-            </tr>
-            </thead>
-            <tbody data-bind="foreach: visible, scroll: onWheel">
-            <tr>
-                <td data-bind="text: id"></td>
-                <td data-bind="text: name"></td>
-                <td data-bind="text: gender"></td>
-                <td data-bind="text: eyeColor"></td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="track">
-            <div class="track-inner">
-                <div class="track-scrubber" data-bind="lazyScrubberVertical: { percentage: percentage, on: on(), max: max() }">
-                    <span class="text">Scrubber</span>
+<header>
+    <div id="header">
+        <div id="headerBgContainer">
+            <div id="headerCenter">
+                <div id="headerTop" class="right clearfix">
+
+                    <div id="logo" class="noindex">
+
+                        <a href="/no/"><img src="/Web/Images/logo.png" alt="Altinnett"></a>
+
+                        <span class="logoText">For planlegging, utvikling og forvaltning av tjenester i Altinn</span>
+                    </div>
+
+                    <!-- search -->
+                    <div class="search clearfix">
+
+                        <div class="noindex">
+                            <div id="searchBox" class="right">
+                                <input type="search" autocomplete="off" placeholder="Søk"
+                                       data-bind="event: {keyup: searchOnKeyPress}, value: searchField"
+                                       data-value="Søk i AltinnNett">
+
+                                <input type="button" value="Søk" class="submitBtn" data-bind="click: search">
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="loginBtn right" href="/no/Tjenestekalender/logout/">Logg ut</a>
+                    <!-- end search -->
+                </div>
+                <!-- end headerTop -->
+                <div id="headerBottom" class="left">
+
+                    <div id="mainMenu" class="noindex">
+
+                        <ul class="menuItem">
+                            <li>
+                                <a href="/no/Bli-tjenesteeier/Hvordan-bli-tjenesteeier-i-Altinn/">Bli tjenesteeier</a>
+                            </li>
+                            <li>
+                                <a href="/no/Tjenesteutvikling/Tjenestens-faser-i-Altinn/">Utvikle tjeneste</a>
+                            </li>
+                            <li>
+                                <a href="/no/Drift-og-forvaltning/">Drift og forvaltning</a>
+                            </li>
+                            <li>
+                                <a href="/no/Sluttbrukersystemer/">Sluttbrukersystemer</a>
+                            </li>
+                            <li>
+                                <a href="/no/Dokumentasjon/">Dokumentasjon</a>
+                            </li>
+                            <li>
+                                <a href="/no/Tjenestekalender/">Tjenestekalender</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</header>
+
+<div id="wrapper">
+
+    <div style="clear: both;"></div>
+    <div id="mainContainer" class="left noindex">
+        <div class="content wide left">
+            <div id="feedback">
+
+
+            </div>
+
+            <div class="tjenestekalenderMenu">
+    <span class="group">
+
+        <a href="/no/Tjenestekalender/" class="">STARTSIDE</a>
+    </span>
+    <span class="group">
+        <a href="/no/Tjenestekalender/Totaloversikt/" class="selected">TOTALOVERSIKT</a>
+        <a href="/no/Tjenestekalender/Masterplan/" class="">MASTERPLAN</a>
+        <a href="/no/Tjenestekalender/Rapport/" class="">RAPPORTER</a>
+        <a href="/no/Tjenestekalender/Prognoser/" class="">PROGNOSER</a>
+<a href="/no/Tjenestekalender/Caseliste/" class="">CASE</a>    </span>
+    <span class="group">
+        <a href="/no/Tjenestekalender/Ny-person/" class="">KONTAKTER</a>
+
+<a href="/no/Tjenestekalender/Ny-tjenesteeier/" class="">TJENESTEEIERE</a><a href="/no/Tjenestekalender/Helligdager/"
+                                                                             class="">HELLIGDAGER</a>    </span>
+            </div>
+
+            <div class="tjenestekalender">
+
+                <div class="lazy lazy-vertical">
+                    <div class="control-panel" data-lazy-list-control-panel='{"filterTopic": "LLFT", "comparatorTopic":"LLCT", "controls": [{"name":"ID","actions":[{"type":"freeTextFilter","propertyName":"id"},{"type":"alphabeticalAscendingSort","propertyName":"id"},{"type":"alphabeticalDescendingSort","propertyName":"id"}]},{"name":"Gender","actions":[{"type":"fixedFilter","propertyName":"gender","propertyValue":"female","displayName":"Female"},{"type":"fixedFilter","propertyName":"gender","propertyValue":"male","displayName":"Male"}]},{"name":"Eye Color","actions":[{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"green","displayName":"Green"},{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"blue","displayName":"Blue"},{"type":"fixedFilter","propertyName":"eyeColor","propertyValue":"brown","displayName":"Brown"}]},{"name":"Email","actions":[{"type":"freeTextFilter","propertyName":"email"},{"type":"alphabeticalAscendingSort","propertyName":"email"},{"type":"alphabeticalDescendingSort","propertyName":"email"}]},{"name":"Favorite fruit","actions":[{"type":"freeTextFilter","propertyName":"favoriteFruit"},{"type":"alphabeticalAscendingSort","propertyName":"favoriteFruit"},{"type":"alphabeticalDescendingSort","propertyName":"favoriteFruit"}]},{"name":"GUID","actions":[{"type":"freeTextFilter","propertyName":"guid"},{"type":"alphabeticalAscendingSort","propertyName":"guid"},{"type":"alphabeticalDescendingSort","propertyName":"guid"}]},{"name":"Active","actions":[{"type":"fixedFilter","propertyName":"isActive","propertyValue":true,"displayName":"Active"},{"type":"fixedFilter","propertyName":"isActive","propertyValue":false,"displayName":"Inactive"}]}] }'>
+                        <ul class="panels panels-slim" data-bind="foreach: panels">
+                            <li class="panel">
+                                <h3 class="panel-title" data-bind="text: name"></h3>
+                                <ul class="panel-actions" data-bind="foreach: actions">
+                                    <li class="panel-action" data-bind="template: { name: type + '_tmpl' }"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-lazy-list-vertical='{ "endpoint": "1k.json", "pageSize": 15 }'>
+                        <div>
+                            Showing <span data-bind="text: visible().length"></span> of <span data-bind="text: processed().length"></span>, total: <span data-bind="text: data().length"></span>
+                        </div>
+                        <div class="lazy-wrapper">
+                            <table class="lazy-table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Eye Color</th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach: visible, scroll: onWheel">
+                                <tr>
+                                    <td data-bind="text: id"></td>
+                                    <td data-bind="text: name"></td>
+                                    <td data-bind="text: gender"></td>
+                                    <td data-bind="text: eyeColor"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="track" data-bind="if: shouldShowScrubber">
+                                <div class="track-inner">
+                                    <div class="track-scrubber" data-bind="lazyScrubberVertical: { percentage: percentage, on: on(), max: max() }">
+                                        <span class="text">Scrubber</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script id="freeTextFilter_tmpl" type="text/html">
+                    <input class="panel-input" type="text" data-bind="textInput: filter" />
+                </script>
+                <script id="alphabeticalAscendingSort_tmpl" type="text/html">
+                    <button class="panel-button" type="button" data-bind="click: $root.comparatorHandler">Ascending</button>
+                </script>
+                <script id="alphabeticalDescendingSort_tmpl" type="text/html">
+                    <button class="panel-button" type="button" data-bind="click: $root.comparatorHandler">Descending</button>
+                </script>
+                <script id="fixedFilter_tmpl" type="text/html">
+                    <label class="panel-label">
+                        <input class="panel-checkbox" type="checkbox" data-bind="checked: active" />
+                        <span class="panel-label-text" data-bind="text: displayName"></span>
+                    </label>
+                </script>
+
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
 </div>
-<script id="freeTextFilter_tmpl" type="text/html">
-    <input type="text" data-bind="value: filter, valueUpdate: 'keyup'" />
-</script>
-<script id="alphabeticalAscendingSort_tmpl" type="text/html">
-    <button type="button" data-bind="click: $root.comparatorHandler">Ascending</button>
-</script>
-<script id="alphabeticalDescendingSort_tmpl" type="text/html">
-    <button type="button" data-bind="click: $root.comparatorHandler">Descending</button>
-</script>
-<script id="fixedFilter_tmpl" type="text/html">
-    <label>
-        <input type="checkbox" data-bind="checked: active" />
-        <span data-bind="text: displayName"></span>
-    </label>
-</script>
+
+<footer>
+    <div id="footer">
+        <div class="footerTop">
+            <div class="footerCenter clearfix">
+                <div class="column left-container">
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="/no/Bli-tjenesteeier/Hvordan-bli-tjenesteeier-i-Altinn/">Bli tjenesteeier</a>
+                            </li>
+                            <li>
+                                <a href="/no/Tjenesteutvikling/Tjenestens-faser-i-Altinn/">Utvikle tjeneste</a>
+                            </li>
+                            <li>
+                                <a href="/no/Drift-og-forvaltning/">Drift og forvaltning</a>
+                            </li>
+                            <li>
+                                <a href="/no/Sluttbrukersystemer/">Sluttbrukersystemer</a>
+                            </li>
+                            <li>
+                                <a href="/no/Dokumentasjon/">Dokumentasjon</a>
+                            </li>
+                            <li>
+                                <a href="/no/Tjenestekalender/">Tjenestekalender</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column middle-container">
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="/no/Nyheter/">Nyheter</a>
+                            </li>
+                            <li>
+                                <a href="/no/Begreper-A-A/">Begreper A-Å</a>
+                            </li>
+                            <li>
+                                <a href="/no/Kontakt-Altinn-sentralforvaltning/">Kontakt ASF</a>
+                            </li>
+                            <li>
+                                <a href="/no/Kontakt-Altinn-sentralforvaltning/Hvem-er-hvem/">Kontaktliste</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column right-container">
+                    <div>
+                        <ul>
+                            <li>
+                                <a href="/no/ELMER/">Om ELMER</a>
+                            </li>
+                            <li>
+                                <a href="/no/SERES/">Om SERES</a>
+                            </li>
+                            <li>
+                                <a href="/no/Altinn/">Om Altinn</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footerBgContainer">
+            <div class="footerCenter clearfix"> <!-- Backend: change from id to class -->
+                <div class="column left-container">
+                    <div>
+                        <p>
+                            <strong>Altinn sentralforvaltningen</strong><br>
+                            Org.nr. 974 760 673
+                        </p>
+                    </div>
+                </div>
+                <div class="column middle-container">
+                    <div>
+                        <p>
+                            Brønnøysundregistrene <br>
+                            8910 Brønnøysund
+                        </p>
+                    </div>
+                </div>
+                <div class="column right-container">
+                    <div>
+                        <p>
+                            <a href="mailto:tjenesteeier@altinn.no?Subject=">tjenesteeier@altinn.no</a> <br>
+                            <a href="mailto:sluttbrukersystem@altinn.no?Subject=">sluttbrukersystem@altinn.no</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+</footer>
 </body>
 </html>

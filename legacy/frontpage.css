@@ -1,0 +1,684 @@
+/*------- FRONT PAGE ------*/
+
+.frontPageBanner{
+    background-color: #E8F4FF;
+    margin: 10px 0 10px 0;
+    width: 940px;
+}
+
+.privateFrontPageBanner {
+    width: 683px;
+    background-color: #2e5680;
+    color: #fff;
+    margin: 0 0 15px 0;
+}
+
+.privateFrontPageBanner h1 {
+    font-weight: bold;
+}
+
+.privateFrontPageBanner p {
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+.bannerSection{
+    width: 520px;
+    background-color: #def2ff;
+    float:left;
+}
+
+.bannerSection .fullContainer{
+    float: left;
+    padding: 0 10px 10px;
+}
+
+.bannerSection .leftContainer{
+    float: left;
+    padding: 0 10px 10px;
+    width: 250px;
+}
+
+.bannerSection .rightContainer{
+    width: 250px;
+    float:left;
+}
+
+.bannerSection .rightContainer img{
+    margin: 0;
+}
+
+.bannerSection h1,
+.bannerSection p{
+    color: #1b406c;
+}
+
+.bannerSection .leftContainer p{
+    margin-bottom: 0;
+
+}
+
+.bannerSection .leftContainer h1{
+    float: left;
+    font-weight: bold;
+}
+
+.bannerSection .divider.yellow{
+    margin: 10px 0 10px;
+}
+
+.sectionPageBanner{
+    background-color: #def2ff;
+    color: #1b406c;
+    width: 530px;
+    margin: 0 0 0 0;
+}
+
+.sectionPageBanner p{
+    color: #1b406c;
+}
+
+.frontPageBanner h1,
+.sectionPageBanner h1{
+    color:#00446a;
+    font-weight: bold;
+}
+
+.frontPageBanner h1{
+    margin-bottom: 0;
+}
+
+.frontPageBanner h2{
+    color: #00446a;
+}
+
+.frontPageBanner .container,
+.privateFrontPageBanner .container,
+.sectionPageBanner .container {
+    float: left;
+    margin: 10px 10px 0 10px;
+}
+
+.greenDivider{
+    width: 50px;
+    height: 3px;
+    background-color: #dad33f;
+    margin-bottom: 10px;
+}
+
+.frontPageBanner a
+{
+    text-decoration: none;
+    color: #fff;
+}
+.frontPageBanner a:hover
+{
+    text-decoration: underline;
+}
+
+
+.frontPageBanner .bannerImages{
+    width: 223px;
+    float: left;
+    margin: 10px 7px 15px 0;
+    position: relative;
+}
+
+.frontPageBanner .bannerImages .textBox{
+    top: 75px;
+    left: 36px;
+    position: absolute;
+    width: 160px;
+    height: 30px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.frontPageBanner .bannerImages .greenArrow{
+    background-image: url(img/green_arrow_frontpage.png);
+    background-position: 0 0;
+    height: 120px;
+    width: 223px;
+}
+
+.frontPageBanner .bannerImages .greenArrow:hover{
+    background-position: 0 -127px;
+}
+
+.frontPageBanner .bannerImages .orangeArrow{
+    background-image: url(img/orange_arrow_frontpage.png);
+    background-position: 0 -4px;
+    height: 120px;
+    width: 250px;
+    background-repeat: no-repeat;
+}
+
+.frontPageBanner .bannerImages .orangeArrow:hover{
+    background-position: 0 -128px;
+}
+
+.frontPageBanner .bannerImages .redArrow{
+    background-image: url(img/red_arrow_frontpage.png);
+    background-position: 0 0;
+    height: 120px;
+    width: 225px;
+}
+
+.frontPageBanner .bannerImages .redArrow:hover{
+    background-position: 0 -128px;
+}
+
+
+.frontPageBanner .bannerImages .purpleArrow{
+    background-image: url(img/purple_arrow_frontpage.png);
+    background-position: 0 0;
+    height: 120px;
+    width: 250px;
+    background-repeat: no-repeat;
+}
+
+.frontPageBanner .bannerImages .purpleArrow:hover{
+    background-position: 0 -129px;
+}
+
+.column240px{
+    width: 240px;
+    float: left;
+    position: relative;
+}
+
+.column450px{
+    width: 450px;
+    float: left;
+    position: relative;
+}
+
+div.sectionpage .column240px{
+    width: 160px;
+    padding-right: 10px;
+    float: left;
+    position: relative;
+}
+
+div.sectionpage .column240px .categoryColorTop.blue {
+    height: 5px;
+    width: 166px;
+    background-image: url(img/gradient_column_165px.png);
+    margin: 10px 0 10px 0;
+}
+
+div.frontpage .column240px,
+div.frontpagePrivate .column240px{
+    background-image: url(img/kolonne_forside.png);
+    background-repeat: repeat-y;
+}
+
+div.frontpage .column240px .container,
+div.frontpagePrivate.column240px .container{
+    float:left;
+    padding:0 20px 25px 20px;
+}
+
+div.frontpage .column240px {
+    margin-top: 15px;
+}
+
+.column240px.lastLeft{
+    padding: 0 0 0 20px;
+}
+.column240px .categoryColorTop{
+    float: left;
+    height: 6px;
+}
+div.frontpage .column240px .categoryColorTop
+{
+    width: 230px;
+    margin-left: -13px;
+}
+div.sectionpage .column240px .categoryColorTop{
+    width: 170px;
+    margin-bottom: 10px;
+}
+
+.column240px .categoryColorTop.altinn,
+.column240px .categoryColorTop.blue{
+    background-image: url(img/sprite_category_colors.png);
+    background-position: 0 0;
+}
+
+.column240px .categoryColorTop.seres{
+    background-image: url(img/sprite_category_colors.png);
+    background-position: 0 -10px;
+}
+
+.column240px .categoryColorTop.elmer{
+    background-image: url(img/sprite_category_colors.png);
+    background-position: 0 -18px;
+}
+
+.column240px .logo,
+.column232px .logo,
+.column306px .logo{
+    float: left;
+    height:25px;
+    width: 145px;
+    margin: 10px 0 15px 0;
+}
+.column240px .logo img,
+.column232px .logo img,
+.column306px .logo img
+{
+    margin: 0;
+}
+.column240px .logo.altinn,
+.column232px .logo.altinn,
+.column306px .logo.altinn{
+    background-image: url(img/category_logos_sprite.png);
+    background-position: 0 0;
+}
+
+.column240px .logo.seres,
+.column232px .logo.seres,
+.column306px .logo.seres{
+    background-image: url(img/category_logos_sprite.png);
+    background-position: 0 -25px;
+}
+
+.column240px .logo.elmer,
+.column232px .logo.elmer,
+.column306px .logo.elmer{
+    background-image: url(img/category_logos_sprite.png);
+    background-position: 0 -50px;
+}
+
+.column240px .columnImage{
+    float: left;
+    width: 210px;
+    margin: 10px 0 10px 10px;
+}
+
+.column240px .imageHeader h3{
+    font-size: 16px;
+    font-weight: normal;
+    font-family: Verdana, Arial, Geneva, Helvetica, sans-serif
+}
+
+div.frontpage .shadowBottom{
+    background-image: url("img/shadow_bottom_frontpage_column.png");
+    bottom: -13px;
+    display: block;
+    float: left;
+    height: 13px;
+    left: 5px;
+    position: absolute;
+    width: 242px;
+}
+
+div.sectionpage .textContainer{
+    left: -20px;
+}
+
+.loginBtn{
+    background-image: url(img/login_btn.png);
+    width: 118px;
+    background-position: 0 0;
+    padding: 5px 0;
+    display:block;
+    margin-left: 35px;
+    border: medium none;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.loginBtn:hover{
+    background-position: 0 -28px;
+    color: #000;
+}
+
+.column470px{
+    width: 470px;
+}
+
+.column470px .campaignField{
+    position: relative;
+    float: left;
+    width: 470px;
+}
+.column720px .campaignField{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.campaignField img {
+    width: 470px;
+}
+
+.column470px .campaignField .textField,
+.column720px .campaignField .textField{
+    padding: 10px;
+    background-color: #174472;
+    /* for IE */
+    filter:alpha(opacity=90);
+    /* CSS3 standard */
+    opacity:0.9;
+}
+
+.column470px .campaignField .textField.withMedia{
+    margin-top: -40px;
+}
+
+.column720px .campaignField .textField.withMedia {
+    margin-top: -25px;
+}
+
+.column470px .campaignField .textField p,
+.column720px .campaignField .textField p,
+.column470px .campaignField .textField ul li,
+.column720px .campaignField .textField ul li,
+.column470px .campaignField .textField a,
+.column720px .campaignField .textField a {
+    font-size: :14px;
+    color: #fff;
+}
+
+.column470px .campaignField .textField a:hover,
+.column720px .campaignField .textField a:hover {
+    color: #a2bed4;
+}
+
+.column470px .campaignField .textField h1,
+.column720px .campaignField .textField h1{
+    color: #fff;
+}
+
+.column470px .campaignField .textField .divider.yellow,
+.column720px .campaignField .textField .divider.yellow{
+    margin: 0 0 10px 0;
+}
+
+.newsSection{
+    width: 450px;
+    margin: 20px 0;
+    padding: 0 10px 10px 10px;
+    float: left;
+}
+
+.column720px .focusArticle{
+    width: 700px;
+}
+
+.column720px .focusArticle h1{
+    color: #646464;
+}
+
+.column720px .focusArticle img {
+    width: 300px;
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.column720px .focusArticle .textArea {
+    float: left;
+    width: 380px;
+}
+
+.column720px .focusArticle .textArea h2{
+    color: #00446a;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.column720px .focusArticle .divider{
+    margin-top: 0;
+}
+
+.column720px h1{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.focusArticle img{
+    width: 190px;
+}
+
+.newsSection h4,
+.focusArticle h4{
+    font-weight: bold;
+    color: #174472;
+    text-transform: none;
+    font-size: 12px;
+}
+
+.focusArticle h4{
+    margin-top: 10px;
+}
+
+.focusArticle .dateText{
+    font-weight: bold;
+    float: left;
+}
+
+.focusArticle .publisher{
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #636363;
+    float: left;
+}
+
+.focusArticle .yellowText{
+    font-size: 11px;
+    float: left;
+}
+
+.focusArticle a{
+    font-size: 10px;
+    text-decoration: none;
+}
+
+div.frontpagePrivate .column240px.loggedIn{
+    margin-left:10px;
+    float: left;
+    width: 240px;
+    background:none;
+}
+
+.frontpagePrivate .focusArticle {
+    margin-bottom: 10px;
+}
+
+.focusArticle{
+    background-color: #dcdedf;
+    width: 190px;
+    padding: 10px;
+    margin: 0 0 25px 0;
+    float: left;
+}
+
+.container240px.yellowInvert{
+    background: url("img/yellow_gradient_invert.jpg") repeat-x scroll 0 0 #FFFFFF;
+    float: left;
+    width: 220px;
+    padding: 0 10px 0 10px;
+}
+
+
+.container240px.yellowInvert .operationMsg{
+    background-color: #DAD025;
+    padding: 5px;
+    width: 210px;
+    margin: 10px 0;
+}
+
+.container240px.yellowInvert .divider.white{
+    margin-top: 10px;
+}
+
+.container240px.yellowInvert .date{
+    color: #000;
+    display: block;
+    font-size: 11px;
+}
+
+/* CONTENT */
+
+.content940px{
+    width: 940px;
+    margin: 15px 0 35px 0;
+}
+
+/* RIGHT SIDEBAR */
+
+#rightSidebar .contentRightSidebar ul li{
+    list-style: none;
+}
+.headingRightSidebar{
+    background-image: url("img/heading_right_bg.jpg");
+    width: 210px;
+    height: 47px;
+}
+
+.headingRightSidebar h3{
+    /*font-variant: small-caps;*/
+    padding: 20px 5px 0 10px;
+}
+
+#rightSidebar a,
+.container240px a{
+    display: inline-block;
+    line-height: 16px;
+    text-decoration: none;
+    color: #1b406c;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#rightSidebar a:hover,
+.container240px a:hover{
+    color: #0092d7;
+}
+
+#rightSidebar p{
+    font-size: 11px;
+}
+.publisher{
+    display:block;
+    font-size: 11px;
+}
+
+.contentRightSidebar{
+    clear: both;
+    margin-top: 15px;
+}
+
+div.column240px ul {
+    margin-bottom:5px;
+    padding-left: 22px !important;
+}
+
+div.column240px ul li {
+    list-style-image: url('img/link_liste_arrow.png');
+    font-size: 12px;
+    line-height: 16px;
+}
+
+div.column240px ul li a {
+    color: #1b406c;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+}
+
+div.column240px ul li a:hover {
+    color: #0092d7;
+}
+
+div.column240px ol {
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 15px 0 20px 0;
+    list-style-type:none;
+
+}
+
+div.column240px ol li {
+    margin-bottom:5px;
+}
+
+div.column240px ol li span {
+    background-image: url("img/custom_ol_element.png");
+    background-position: 0px 1px;
+    color: white;
+    float: left;
+    height: 17px;
+    margin: 0 0 0 -23px;
+    width: 15px;
+    font-size: 10px;
+}
+
+div.column240px ol li span span
+{
+    background: none;
+    margin: 0 0 0 4px;
+}
+
+div.column240px h1 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+div.column240px p {
+    margin: 0 0 20px 0;
+}
+
+
+div.relevantLinks {
+    margin-bottom: 30px;
+}
+
+#rightSidebar .relevantLinks a{
+}
+
+#rightSidebar .newsRight a{
+    margin: 0;
+    padding: 0;
+}
+
+#rightSidebar .date{
+    color: #636363;
+    display: block;
+    font-size: 11px;
+    line-height: 1;
+}
+
+#rightSidebar .newsRight p{
+    font-size: 12px;
+}
+
+#rightSidebar .newsImg img{
+    width: 200px;
+    margin: 0 0 10px 0;
+}
+
+#rightSidebar .moreNewsLink a{
+    float: right;
+    font-weight: normal;
+    margin-top: 20px;
+}
+
+div.preview-selector
+{
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    color: #fff;
+    font-size: 12px;
+}
+
+div.preview-selector a
+{
+    color: #fff;
+}

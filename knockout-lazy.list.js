@@ -444,6 +444,11 @@
                     owner: self
                 });
 
+                self.shouldShowScrubber = ko.computed(function(){
+                    // TODO: Implementation is different for horizontal and vertical. Only vertical works with this.
+                    return self.processed().length > self.pageSize();
+                });
+
                 self.onWheel = function(event){
                     var start = self.on(),
                         max = self.max(),
